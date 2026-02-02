@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #2c2c54, #6a5acd);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    transition: background 1s;
+}
+
+.container {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.6em;
+    animation: fadeInDown 2s ease;
+}
+
+/* TYPEWRITER */
+.typewriter {
+    font-size: 1.2em;
+    min-height: 80px;
+    margin: 20px 0;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    animation: float 4s ease-in-out infinite;
+}
+.card img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 15px;
+    margin: 15px 0;
+    animation: pulse 3s infinite;
+}
+.card p:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.25);
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+/* BUTTONS */
+.btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    background: #fff;
+    color: #ff4f81;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* SECRET SECTION */
+.secret-section {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.secret-section p:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+/* VIDEO */
+.video-wrapper {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.video-wrapper video {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+}
+.video-text-below {
+    margin-top: 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    padding: 12px;
+    border-radius: 10px;
+    line-height: 1.4;
+    font-weight: bold;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.video-text-below:hover {
+    background: rgba(0,0,0,0.6);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* FINAL IMAGE SECTION */
+.bottom-image-wrapper {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bottom-image-wrapper img {
+    width: 100%;
+    border-radius: 15px;
+}
+.bottom-image-text {
+    margin-top: 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 12px;
+    border-radius: 10px;
+    line-height: 1.4;
+    font-weight: bold;
+}
+.bottom-image-text:hover {
+    background: rgba(0,0,0,0.7);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+/* HEARTS */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: rise 6s linear infinite;
+    color: rgba(255,255,255,0.8);
+}
+
+/* DEVICE INFO BOX */
+.info-box {
+    background: rgba(0,0,0,0.5);
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 50px;
+    text-align: left;
+    line-height: 1.6;
+}
+.info-box p:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.02);
+    padding: 8px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* ANIMATIONS */
+@keyframes rise {from { transform: translateY(0); opacity:1;} to { transform: translateY(-110vh); opacity:0; }}
+@keyframes fadeInDown {from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);}}
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="my-wangu.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Happy Valentine 💝</h1>
+    <div class="typewriter" id="typewriter"></div>
+
+    <div class="card">
+        <img src="https://files.catbox.moe/8jx0q3.jpg" alt="Letty">
+        <p>
+            You are special and appreciated 🌷<br>
+            Always keep believing in yourself ✨<br>
+            Nakupenda my wangu 🥰
+        </p>
+        <div class="signature">— From Maxx 💖</div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="video-wrapper">
+        <video src="https://files.catbox.moe/5w8s1c.mp4" autoplay loop muted playsinline controls></video>
+        <div class="video-text-below">
+            I enjoy every moment with you, Miemie 💕<br>
+            Your natural smile and real self are what I adore ✨<br>
+            Every clip makes me happy 💖<br>
+            Maxx loves seeing the real you 🌸<br>
+            Every moment with you feels magical 🌹
+        </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <button class="btn" id="playMusicBtn">🎵 Play My Favourite Music 🎵</button>
+    <button class="btn" id="revealBtn">💖 Baby Letty click here for Hubby💖</button>
+
+    <div class="secret-section" id="secretSection">
+        <h2>💌 si kwa ubaya but nkiandika kwa kijaluo ndo nashuku unaeza elewa feelings zangu💌</h2>
+        <p>Letty aheri gi chunya mar adier,,,,imora jaoda,,,hera ni meda teko. kendo awinjo ka chunya lit sa mora amora ma pacha oparo ni inyalo weya 💕</p>
+        <p>akuai ni ibed koda nyakachien'g ,,,,nekech an aseng'ado ni ok anyal bedo gi mora mora kaok in miemie na ☀️</p>
+        <p>Agombo nipar diriyo kaka aheri gingimana tee to inbe ing'ade chunyi niokinyal weya kenda🌸</p>
+        <p>hera ma imiya okwee kendo nigi ber,,,Letty akia kaka anyalo nyisi to aheri adier,,,aheri makia kaka anyisi 🎶</p>
+        <p>sama naneni mokwongo neok ang'eyo nanyalo heri kamaye,,ok anyal wacho ni ahero wengeni,,,,kata dimple ni,,,,,, kata ogwandi,,,,,, kata ng'uti...mano awuondora,,,,what if kachieng moro by accidentally gikma ahero kuomi oruma kata ohinyore.. bende de aheri kendo minwa?💖</p>
+        <p>An aheri letty,,,,aheri kaka inno emomiyo kanyisi kata niorna picha ni kata video... plz akwai kikitigi filters.. aheri kaka in,,,,kaka naneni gi wang'a diereka ,,,,ahero kaneni kaka in ...kama hujachana nyewele,kama umeparara,kama umevaa vibaya,,kama hujaosha uso ,,,aheri kamano nikech an ema ang'eyo ber ni ,,,,just avoid filters u perfect with your natual look ✨</p>
+        <p>Miemie, your natural self is my favourite thing 🌟</p>
+    </div>
+
+    <!-- DEVICE INFO -->
+    <div class="info-box">
+        <h3>📱 Device Information</h3>
+        <p><b>Date & Time:</b> <span id="dateTime">Loading...</span></p>
+        <p><b>Network Status:</b> <span id="networkStatus">Checking...</span></p>
+        <p><b>Device:</b> Android Device</p>
+        <p><b>Screen Resolution:</b> <span id="resolution"></span></p>
+        <p><b>Battery Status:</b> <span id="batteryStatus">Checking...</span></p>
+        <p><b>IP Address:</b> 154.159.238.163 (rongo,kamagambo 2.5gyts to Maxx's HMD X20 Phone )</p>
+    </div>
+
+    <!-- FINAL IMAGE -->
+    <div class="bottom-image-wrapper">
+        <img src="https://files.catbox.moe/9d71as.jpg" alt="Letty Maxx Love">
+        <div class="bottom-image-text">
+            Letty, Maxx anakupenda sana 💕<br>
+            No man will ever love you like I do ✨<br>
+            You are my heart, my sunshine, my everything 🌹
+        </div>
+    </div>
+
+    <footer>©2026 love maxxLetty | Made with love & care 🌷</footer>
+</div>
+
+<script>
+/* TYPEWRITER */
+const messages = ["Hey Letty 💕","This page is for you 🌷","Maxx thinks you're amazing 💖","Happy Valentine 💝"];
+let msgIndex = 0, charIndex = 0;
+const typeDiv = document.getElementById("typewriter");
+(function typeEffect(){
+    if(charIndex < messages[msgIndex].length){
+        typeDiv.textContent += messages[msgIndex][charIndex++];
+        setTimeout(typeEffect,70);
+    }else{
+        setTimeout(()=>{typeDiv.textContent=""; charIndex=0; msgIndex=(msgIndex+1)%messages.length; typeEffect();},2000);
+    }
+})();
+
+/* HEARTS */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=16+Math.random()*20+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),7000);
+},400);
+
+/* MUSIC */
+playMusicBtn.onclick=()=>{bgMusic.play(); playMusicBtn.style.display="none";};
+
+/* REVEAL */
+revealBtn.onclick=()=>{secretSection.style.display="block"; secretSection.scrollIntoView({behavior:"smooth"});};
+
+/* DATE & TIME */
+function updateDateTime(){const now=new Date();document.getElementById("dateTime").textContent=now.toLocaleDateString()+", "+now.toLocaleTimeString();}
+setInterval(updateDateTime,1000); updateDateTime();
+
+/* NETWORK STATUS */
+function updateNetwork(){let status=navigator.onLine?"Online":"Offline"; let conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(conn&&conn.downlink) status += ` (${conn.effectiveType} ~${conn.downlink} Mbps)`; document.getElementById("networkStatus").textContent=status;}
+window.addEventListener("online",updateNetwork); window.addEventListener("offline",updateNetwork); updateNetwork();
+
+/* BATTERY STATUS */
+if(navigator.getBattery){navigator.getBattery().then(battery=>{function updateBattery(){document.getElementById("batteryStatus").textContent=Math.round(battery.level*100)+"%";}updateBattery(); battery.addEventListener("levelchange",updateBattery);});} else{document.getElementById("batteryStatus").textContent="Not supported";}
+
+/* SCREEN RESOLUTION */
+function updateResolution(){document.getElementById("resolution").textContent=window.innerWidth+" × "+window.innerHeight;}
+window.addEventListener("resize",updateResolution); updateResolution();
+</script>
+</body>
+</html>
