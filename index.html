@@ -355,6 +355,30 @@ body {
 @keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
 </style>
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* MUSIC PLAY / PAUSE */
+  const musicBtn = document.getElementById("musicToggle");
+  const bgMusic = document.getElementById("bgMusic");
+  let isPlaying = false;
+
+  if (musicBtn && bgMusic) {
+    musicBtn.onclick = () => {
+      if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.textContent = "⏸ Pause Maxx's favourite";
+        isPlaying = true;
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵 Play Maxx's favourite";
+        isPlaying = false;
+      }
+    };
+  }
+
+});
+</script>
 
 <body>
 <script>
