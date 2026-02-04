@@ -735,20 +735,32 @@ menuDots.addEventListener("click", () => {
     menuPopup.style.display === "block" ? "none" : "block";
 });
 
-/* MENU TOGGLE */
-menuDots.addEventListener("click", (e) => {
-  e.stopPropagation(); // prevent immediate close
-  menuPopup.style.display =
-    menuPopup.style.display === "block" ? "none" : "block";
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-/* CLOSE MENU WHEN CLICKING OUTSIDE */
-document.addEventListener("click", (e) => {
-  if (!menuPopup.contains(e.target) && !menuDots.contains(e.target)) {
-    menuPopup.style.display = "none";
+  const menuDots = document.getElementById("menuDots");
+  const menuPopup = document.getElementById("menuPopup");
+
+  if (!menuDots || !menuPopup) {
+    console.error("Menu elements not found");
+    return;
   }
-});
 
+  /* TOGGLE MENU */
+  menuDots.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    menuPopup.style.display =
+      menuPopup.style.display === "block" ? "none" : "block";
+  });
+
+  /* CLOSE WHEN CLICKING OUTSIDE */
+  document.addEventListener("click", (e) => {
+    if (!menuPopup.contains(e.target) && !menuDots.contains(e.target)) {
+      menuPopup.style.display = "none";
+    }
+  });
+
+});
 const messageBox = document.getElementById("messageBox");
 const messageText = document.getElementById("messageText");
 
