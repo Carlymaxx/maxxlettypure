@@ -586,7 +586,7 @@ My one and only, my love, my sweet 💘
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
- TYPEWRITER */
+/* TYPEWRITER */
   const messages = [
     "Hey Letty 💕",
     "This page is for you 🌷",
@@ -597,10 +597,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let msgIndex = 0, charIndex = 0;
   const typeDiv = document.getElementById("typewriter");
 
-  function typeEffect(){
+  function typeEffect() {
     if (!typeDiv) return;
 
-    if (charIndex < messages[msgIndex].length){
+    if (charIndex < messages[msgIndex].length) {
       typeDiv.textContent += messages[msgIndex][charIndex++];
       setTimeout(typeEffect, 70);
     } else {
@@ -625,25 +625,24 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => h.remove(), 7000);
   }, 400);
 
-/* PLAY / PAUSE MUSIC */
-const musicBtn = document.getElementById("musicToggle");
-const bgMusic = document.getElementById("bgMusic");
+  /* MUSIC */
+  const musicBtn = document.getElementById("musicToggle");
+  const bgMusic = document.getElementById("bgMusic");
+  let isPlaying = false;
 
-let isPlaying = false;
-
-if (musicBtn && bgMusic) {
-  musicBtn.addEventListener("click", () => {
-    if (!isPlaying) {
-      bgMusic.play().catch(() => {});
-      musicBtn.textContent = "⏸ Pause Maxx's favourite";
-      isPlaying = true;
-    } else {
-      bgMusic.pause();
-      musicBtn.textContent = "🎵 Play Maxx's favourite";
-      isPlaying = false;
-    }
-  });
-}
+  if (musicBtn && bgMusic) {
+    musicBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.textContent = "⏸ Pause Maxx's favourite";
+        isPlaying = true;
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵 Play Maxx's favourite";
+        isPlaying = false;
+      }
+    });
+  }
 
   /* REVEAL */
   const revealBtn = document.getElementById("revealBtn");
@@ -657,7 +656,7 @@ if (musicBtn && bgMusic) {
 
   /* DATE & TIME */
   const dateTimeEl = document.getElementById("dateTime");
-  function updateDateTime(){
+  function updateDateTime() {
     if (!dateTimeEl) return;
     const now = new Date();
     dateTimeEl.textContent =
@@ -666,9 +665,9 @@ if (musicBtn && bgMusic) {
   updateDateTime();
   setInterval(updateDateTime, 1000);
 
-  /* NETWORK STATUS */
+  /* NETWORK */
   const networkEl = document.getElementById("networkStatus");
-  function updateNetwork(){
+  function updateNetwork() {
     if (!networkEl) return;
     let status = navigator.onLine ? "Online" : "Offline";
     const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
@@ -680,135 +679,89 @@ if (musicBtn && bgMusic) {
   window.addEventListener("online", updateNetwork);
   window.addEventListener("offline", updateNetwork);
   updateNetwork();
-/* HEADER COLOR & FONT CHANGER */
-const header = document.querySelector("h1");
 
-const headerStyles = [
-  { color: "#ff4ecd", font: "'Great Vibes', cursive" },
-  { color: "#4facfe", font: "'Orbitron', sans-serif" },
-  { color: "#ff512f", font: "'Montserrat', sans-serif" },
-  { color: "#00f2fe", font: "'Poppins', sans-serif" },
-  { color: "#ffd700", font: "'Great Vibes', cursive" }
-];
+  /* HEADER STYLE */
+  const header = document.querySelector("h1");
+  const headerStyles = [
+    { color: "#ff4ecd", font: "'Great Vibes', cursive" },
+    { color: "#4facfe", font: "'Orbitron', sans-serif" },
+    { color: "#ff512f", font: "'Montserrat', sans-serif" },
+    { color: "#00f2fe", font: "'Poppins', sans-serif" },
+    { color: "#ffd700", font: "'Great Vibes', cursive" }
+  ];
 
-let headerIndex = 0;
+  let headerIndex = 0;
+  setInterval(() => {
+    headerIndex = (headerIndex + 1) % headerStyles.length;
+    if (!header) return;
+    header.style.color = headerStyles[headerIndex].color;
+    header.style.fontFamily = headerStyles[headerIndex].font;
+    header.style.transform = "scale(1.05)";
+    setTimeout(() => header.style.transform = "scale(1)", 500);
+  }, 10000);
 
-setInterval(() => {
-  headerIndex = (headerIndex + 1) % headerStyles.length;
-  header.style.color = headerStyles[headerIndex].color;
-  header.style.fontFamily = headerStyles[headerIndex].font;
-  header.style.transform = "scale(1.05)";
+  /* BACKGROUND */
+  const gradients = [
+    "linear-gradient(135deg, #2c2c54, #6a5acd)",
+    "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+    "linear-gradient(135deg, #41295a, #2F0743)",
+    "linear-gradient(135deg, #1f4037, #99f2c8)",
+    "linear-gradient(135deg, #42275a, #734b6d)",
+    "linear-gradient(135deg, #141e30, #243b55)"
+  ];
 
-  setTimeout(() => {
-    header.style.transform = "scale(1)";
-  }, 500);
-}, 10000); // every 10 seconds
-/* BACKGROUND COLOR CHANGER */
-const gradients = [
-  "linear-gradient(135deg, #2c2c54, #6a5acd)",
-  "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-  "linear-gradient(135deg, #41295a, #2F0743)",
-  "linear-gradient(135deg, #1f4037, #99f2c8)",
-  "linear-gradient(135deg, #42275a, #734b6d)",
-  "linear-gradient(135deg, #141e30, #243b55)"
-];
+  let currentGradient = 0;
+  setInterval(() => {
+    currentGradient = (currentGradient + 1) % gradients.length;
+    document.body.style.background = gradients[currentGradient];
+  }, 10000);
 
-let currentGradient = 0;
+  /* MENU + MESSAGE */
+  const menuDots = document.getElementById("menuDots");
+  const menuPopup = document.getElementById("menuPopup");
+  const messageBox = document.getElementById("messageBox");
 
-setInterval(() => {
-  currentGradient = (currentGradient + 1) % gradients.length;
-  document.body.style.background = gradients[currentGradient];
-}, 10000); // 10 seconds
-
-  document.addEventListener("DOMContentLoaded", () => {
-
-  /* BATTERY */
-  const batteryEl = document.getElementById("batteryStatus");
-  if (navigator.getBattery && batteryEl) {
-    navigator.getBattery().then(battery => {
-      function updateBattery() {
-        batteryEl.textContent = Math.round(battery.level * 100) + "%";
-      }
-      updateBattery();
-      battery.addEventListener("levelchange", updateBattery);
+  if (menuDots && menuPopup && messageBox) {
+    menuDots.addEventListener("click", e => {
+      e.stopPropagation();
+      menuPopup.style.display = "block";
+      messageBox.classList.remove("show");
     });
-  } else if (batteryEl) {
-    batteryEl.textContent = "Not supported";
+
+    document.addEventListener("click", () => {
+      menuPopup.style.display = "none";
+      messageBox.classList.remove("show");
+    });
+
+    menuPopup.addEventListener("click", e => e.stopPropagation());
+    messageBox.addEventListener("click", e => e.stopPropagation());
   }
 
-  /* MENU ELEMENTS */
-  const menuDots = document.getElementById("menuDots");
-  const menuPopup = document.getElementById("menuPopup");
-  const messageBox = document.getElementById("messageBox");
-
-  if (!menuDots || !menuPopup) return;
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* MENU ELEMENTS */
-  const menuDots = document.getElementById("menuDots");
-  const menuPopup = document.getElementById("menuPopup");
-  const messageBox = document.getElementById("messageBox");
-
-  /* OPEN MENU */
-  menuDots.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menuPopup.style.display = "block";
-    messageBox.classList.remove("show");
-  });
-
-  /* CLICK OUTSIDE CLOSES EVERYTHING */
-  document.addEventListener("click", () => {
-    menuPopup.style.display = "none";
-    messageBox.classList.remove("show");
-  });
-
-  /* PREVENT INNER CLICKS */
-  menuPopup.addEventListener("click", (e) => e.stopPropagation());
-  messageBox.addEventListener("click", (e) => e.stopPropagation());
-
-  /* SCREEN RESOLUTION */
+  /* SCREEN SIZE */
   const resEl = document.getElementById("resolution");
   function updateResolution() {
-    if (!resEl) return;
-    resEl.textContent = window.innerWidth + " × " + window.innerHeight;
+    if (resEl) resEl.textContent = `${window.innerWidth} × ${window.innerHeight}`;
   }
   window.addEventListener("resize", updateResolution);
   updateResolution();
 
-});
+  /* CHOICE HANDLER */
+  window.choose = function(name) {
+    const messageText = document.getElementById("messageText");
 
-/* CHOICE HANDLER */
-window.choose = function(name) {
-  const messageBox = document.getElementById("messageBox");
-  const messageText = document.getElementById("messageText");
-  const menuPopup = document.getElementById("menuPopup");
+    let message = "";
+    if (name === "carly") message = "😂 Nooo baby… it’s Maxx 💖\nAlways Maxx 😘";
+    else if (name === "calvince") message = "😌 Maxx deserves this love 💕\nNo competition ✨";
+    else if (name === "ochieng") message = "💞 Only Maxx is meant for you 💍❤️\nForever & always";
+    else if (name === "maxx")
+      message = "😭💖 Thank you my wife 😘💍\n\nWith you forever 💕\nChoose me over everything & everyone ♾️❤️\n\nI love you so so much 💖💖💖";
 
-  let message = "";
-
-  if (name === "carly") {
-    message = "😂 Nooo baby… it’s Maxx 💖\nAlways Maxx 😘";
-  } 
-  else if (name === "calvince") {
-    message = "😌 Maxx deserves this love 💕\nNo competition ✨";
-  } 
-  else if (name === "ochieng") {
-    message = "💞 Only Maxx is meant for you 💍❤️\nForever & always";
-  } 
-  else if (name === "maxx") {
-    message =
-      "😭💖 Thank you my wife 😘💍\n\n" +
-      "With you forever 💕\n" +
-      "Choose me over everything & everyone ♾️❤️\n\n" +
-      "I love you so so much 💖💖💖";
-  }
-
-  messageText.textContent = message;
-
-  menuPopup.style.display = "none";
-  messageBox.classList.remove("show");
-  void messageBox.offsetWidth; // reset animation
-  messageBox.classList.add("show");
-};
+    messageText.textContent = message;
+    menuPopup.style.display = "none";
+    messageBox.classList.remove("show");
+    void messageBox.offsetWidth;
+    messageBox.classList.add("show");
+  };
 </script>
+</body>
+</html>
