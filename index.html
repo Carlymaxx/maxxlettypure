@@ -743,22 +743,30 @@ setInterval(() => {
 
   if (!menuDots || !menuPopup) return;
 
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* MENU ELEMENTS */
+  const menuDots = document.getElementById("menuDots");
+  const menuPopup = document.getElementById("menuPopup");
+  const messageBox = document.getElementById("messageBox");
+
   /* OPEN MENU */
   menuDots.addEventListener("click", (e) => {
     e.stopPropagation();
     menuPopup.style.display = "block";
-    if (messageBox) messageBox.classList.remove("show");
+    messageBox.classList.remove("show");
   });
 
-  /* CLICK OUTSIDE CLOSES BOTH BOXES */
+  /* CLICK OUTSIDE CLOSES EVERYTHING */
   document.addEventListener("click", () => {
     menuPopup.style.display = "none";
-    if (messageBox) messageBox.classList.remove("show");
+    messageBox.classList.remove("show");
   });
 
   /* PREVENT INNER CLICKS */
   menuPopup.addEventListener("click", (e) => e.stopPropagation());
-  if (messageBox) messageBox.addEventListener("click", (e) => e.stopPropagation());
+  messageBox.addEventListener("click", (e) => e.stopPropagation());
 
   /* SCREEN RESOLUTION */
   const resEl = document.getElementById("resolution");
@@ -803,3 +811,4 @@ window.choose = function(name) {
   void messageBox.offsetWidth; // reset animation
   messageBox.classList.add("show");
 };
+</script>
