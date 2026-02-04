@@ -720,11 +720,13 @@ setInterval(() => {
   document.body.style.background = gradients[currentGradient];
 }, 10000); // 10 seconds
 
+  document.addEventListener("DOMContentLoaded", () => {
+
   /* BATTERY */
   const batteryEl = document.getElementById("batteryStatus");
   if (navigator.getBattery && batteryEl) {
     navigator.getBattery().then(battery => {
-      function updateBattery(){
+      function updateBattery() {
         batteryEl.textContent = Math.round(battery.level * 100) + "%";
       }
       updateBattery();
@@ -733,20 +735,13 @@ setInterval(() => {
   } else if (batteryEl) {
     batteryEl.textContent = "Not supported";
   }
-/* THREE DOTS MENU LOGIC */
-const menuDots = document.getElementById("menuDots");
-const menuPopup = document.getElementById("menuPopup");
 
-menuDots.addEventListener("click", () => {
-  menuPopup.style.display =
-    menuPopup.style.display === "block" ? "none" : "block";
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-
+  /* MENU ELEMENTS */
   const menuDots = document.getElementById("menuDots");
   const menuPopup = document.getElementById("menuPopup");
   const messageBox = document.getElementById("messageBox");
+
+  if (!menuDots || !menuPopup) return;
 
   /* OPEN MENU */
   menuDots.addEventListener("click", (e) => {
@@ -755,15 +750,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (messageBox) messageBox.classList.remove("show");
   });
 
-  /* CLICK OUTSIDE CLOSES EVERYTHING */
+  /* CLICK OUTSIDE CLOSES BOTH BOXES */
   document.addEventListener("click", () => {
     menuPopup.style.display = "none";
     if (messageBox) messageBox.classList.remove("show");
   });
 
-  /* PREVENT INSIDE CLICKS FROM CLOSING */
+  /* PREVENT INNER CLICKS */
   menuPopup.addEventListener("click", (e) => e.stopPropagation());
   if (messageBox) messageBox.addEventListener("click", (e) => e.stopPropagation());
+
+  /* SCREEN RESOLUTION */
+  const resEl = document.getElementById("resolution");
+  function updateResolution() {
+    if (!resEl) return;
+    resEl.textContent = window.innerWidth + " × " + window.innerHeight;
+  }
+  window.addEventListener("resize", updateResolution);
+  updateResolution();
 
 });
 
@@ -796,20 +800,6 @@ window.choose = function(name) {
 
   menuPopup.style.display = "none";
   messageBox.classList.remove("show");
-  void messageBox.offsetWidth;
+  void messageBox.offsetWidth; // reset animation
   messageBox.classList.add("show");
 };
-  /* SCREEN RESOLUTION */
-  const resEl = document.getElementById("resolution");
-  function updateResolution(){
-    if (!resEl) return;
-    resEl.textContent = window.innerWidth + " × " + window.innerHeight;
-  }
-  window.addEventListener("resize", updateResolution);
-  updateResolution();
-
-});
-</script>
-
-</body>
-</html>
