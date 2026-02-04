@@ -148,9 +148,6 @@ body {
   animation: fadeInDown 2s ease;
   transition: color 1s, font-family 1s, transform 1s;
 }
-/* MUSIC PLAY / PAUSE */
-const musicBtn = document.getElementById("musicToggle");
-const bgMusic = document.getElementById("bgMusic");
 
 let isPlaying = false;
 
@@ -375,6 +372,27 @@ if (musicBtn && bgMusic) {
 </head>
 
 <body>
+<script>
+/* MUSIC PLAY / PAUSE */
+const musicBtn = document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
+
+let isPlaying = false;
+
+if (musicBtn && bgMusic) {
+  musicBtn.onclick = () => {
+    if (!isPlaying) {
+      bgMusic.play().catch(() => {});
+      musicBtn.textContent = "⏸ Pause Maxx's favourite";
+      isPlaying = true;
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = "🎵 Play Maxx's favourite";
+      isPlaying = false;
+    }
+  };
+}
+</script>
 <!-- TOP RIGHT MENU -->
 <div class="menu-container">
   <div class="menu-lines" id="menuDots">
