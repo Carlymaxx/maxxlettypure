@@ -31,6 +31,40 @@ body {
     right: 15px;
     z-index: 9999;
 }
+.menu-popup {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 10px;
+    width: 180px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    display: none;
+    animation: popIn 0.4s ease;
+}
+
+.menu-popup button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.menu-popup button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* POP ANIMATION */
+@keyframes popIn {
+    from { transform: scale(0.7) rotateX(30deg); opacity: 0; }
+    to { transform: scale(1) rotateX(0); opacity: 1; }
+}
 
 .menu-lines {
     width: 30px;
@@ -344,15 +378,15 @@ if (musicBtn && bgMusic) {
 </div>
 
 <body>
-<!-- THREE DOTS MENU -->
+<!-- TOP RIGHT MENU -->
 <div class="menu-container">
   <div class="menu-lines" id="menuDots">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <div class="menu-popup" id="menuPopup">
-    <p class="menu-title">Do you choose 💕</p>
     <button onclick="choose('carly')">Carly</button>
     <button onclick="choose('ochieng')">Ochieng</button>
     <button onclick="choose('calvince')">Calvince</button>
