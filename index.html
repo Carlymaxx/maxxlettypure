@@ -556,6 +556,22 @@ if (musicBtn && bgMusic) {
   window.addEventListener("online", updateNetwork);
   window.addEventListener("offline", updateNetwork);
   updateNetwork();
+/* BACKGROUND COLOR CHANGER */
+const gradients = [
+  "linear-gradient(135deg, #2c2c54, #6a5acd)",
+  "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
+  "linear-gradient(135deg, #41295a, #2F0743)",
+  "linear-gradient(135deg, #1f4037, #99f2c8)",
+  "linear-gradient(135deg, #42275a, #734b6d)",
+  "linear-gradient(135deg, #141e30, #243b55)"
+];
+
+let currentGradient = 0;
+
+setInterval(() => {
+  currentGradient = (currentGradient + 1) % gradients.length;
+  document.body.style.background = gradients[currentGradient];
+}, 10000); // 10 seconds
 
   /* BATTERY */
   const batteryEl = document.getElementById("batteryStatus");
