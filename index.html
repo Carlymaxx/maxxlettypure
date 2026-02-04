@@ -696,6 +696,7 @@ document.addEventListener("click", (e) => {
     menuPopup.style.display = "none";
   }
 });
+
 const messageBox = document.getElementById("messageBox");
 const messageText = document.getElementById("messageText");
 
@@ -722,12 +723,13 @@ window.choose = function(name) {
 
   messageText.textContent = message;
 
+  // restart animation
   messageBox.classList.remove("show");
-  void messageBox.offsetWidth; // reset animation
+  void messageBox.offsetWidth;
   messageBox.classList.add("show");
-};
 
-  alert(message);
+  // close menu after selection
+  menuPopup.style.display = "none";
 };
 
   /* SCREEN RESOLUTION */
