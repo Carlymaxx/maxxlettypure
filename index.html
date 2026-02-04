@@ -24,60 +24,54 @@ body {
     max-width: 800px;
     margin: auto;
 }
-/* THREE DOTS MENU */
-.menu-container {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 9999;
-    font-family: 'Poppins', sans-serif;
-}
-
-.menu-dots {
-    font-size: 28px;
+/* THREE STRAIGHT LINES MENU */
+.menu-lines {
+    width: 30px;
     cursor: pointer;
+}
+
+.menu-lines span {
+    display: block;
+    height: 4px;
+    background: #fff;
+    margin: 6px 0;
+    border-radius: 4px;
+    transition: 0.4s;
+}
+
+/* MESSAGE CARD */
+.message-box {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 260px;
+    background: linear-gradient(135deg, #ff4ecd, #6a5acd);
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 50%;
-    transition: background 0.3s;
+    padding: 18px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 79, 129, 0.6);
+    font-family: 'Poppins', sans-serif;
+    transform: rotateY(90deg) scale(0.7);
+    opacity: 0;
+    transition: all 0.6s ease;
+    z-index: 9998;
 }
 
-.menu-dots:hover {
-    background: rgba(255,255,255,0.2);
+.message-box.show {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
 }
 
-.menu-popup {
-    display: none;
-    margin-top: 10px;
-    background: rgba(0,0,0,0.85);
-    border-radius: 15px;
-    padding: 15px;
-    width: 220px;
-    box-shadow: 0 0 25px rgba(255, 79, 129, 0.5);
-}
-
-.menu-title {
-    color: #ff4ecd;
-    font-weight: bold;
-    margin-bottom: 10px;
+.message-box h3 {
+    margin-top: 0;
+    color: #ffd700;
     text-align: center;
 }
 
-.menu-popup button {
-    width: 100%;
-    margin: 6px 0;
-    padding: 8px;
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #ff4ecd, #6a5acd);
-    color: #fff;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: transform 0.2s;
-}
-
-.menu-popup button:hover {
-    transform: scale(1.05);
+.message-box p {
+    font-size: 0.95em;
+    line-height: 1.4em;
+    white-space: pre-line;
 }
 .youtube-wrapper {
     position: relative;
@@ -332,12 +326,20 @@ if (musicBtn && bgMusic) {
 @keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
 </style>
 </head>
+<!-- MESSAGE BOX -->
+<div class="message-box" id="messageBox">
+  <h3>💖 Message</h3>
+  <p id="messageText"></p>
+</div>
 
 <body>
 <!-- THREE DOTS MENU -->
 <div class="menu-container">
-  <div class="menu-dots" id="menuDots">⋮</div>
-
+  <div class="menu-lines" id="menuDots">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <div class="menu-popup" id="menuPopup">
     <p class="menu-title">Do you choose 💕</p>
     <button onclick="choose('carly')">Carly</button>
@@ -694,25 +696,36 @@ document.addEventListener("click", (e) => {
     menuPopup.style.display = "none";
   }
 });
+const messageBox = document.getElementById("messageBox");
+const messageText = document.getElementById("messageText");
 
-/* CHOICES */
 window.choose = function(name) {
   let message = "";
 
   if (name === "carly") {
-    message = "😂 Nooo baby… it’s Maxx 💖 always Maxx 😘";
-  } else if (name === "calvince") {
-    message = "😌 Maxx deserves this love 💕 no competition ✨";
-  } else if (name === "ochieng") {
-    message = "💞 Only Maxx is meant for you 💍❤️ forever";
-  } else if (name === "maxx") {
+    message = "😂 Nooo baby… it’s Maxx 💖\nAlways Maxx 😘";
+  } 
+  else if (name === "calvince") {
+    message = "😌 Maxx deserves this love 💕\nNo competition ✨";
+  } 
+  else if (name === "ochieng") {
+    message = "💞 Only Maxx is meant for you 💍❤️\nForever & always";
+  } 
+  else if (name === "maxx") {
     message =
       "😭💖 Thank you my wife 😘💍\n\n" +
       "With you forever 💕\n" +
-      "Please choose me over everything and everyone 🙏❤️\n" +
+      "Please choose me over everything & everyone 🙏❤️\n" +
       "Over billions of times ♾️😍\n\n" +
       "I love you so so much 💖💖💖";
   }
+
+  messageText.textContent = message;
+
+  messageBox.classList.remove("show");
+  void messageBox.offsetWidth; // reset animation
+  messageBox.classList.add("show");
+};
 
   alert(message);
 };
