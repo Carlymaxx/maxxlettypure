@@ -58,11 +58,11 @@ if (musicBtn && bgMusic) {
   musicBtn.onclick = () => {
     if (!isPlaying) {
       bgMusic.play().catch(() => {});
-      musicBtn.textContent = "⏸ Pause Music";
+      musicBtn.textContent = "⏸ Pause Maxx's favourite";
       isPlaying = true;
     } else {
       bgMusic.pause();
-      musicBtn.textContent = "🎵 Play Music";
+      musicBtn.textContent = "🎵 Play maxx's favourite";
       isPlaying = false;
     }
   };
