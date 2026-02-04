@@ -24,7 +24,14 @@ body {
     max-width: 800px;
     margin: auto;
 }
-/* THREE STRAIGHT LINES MENU */
+/* THREE RED MENU LINES */
+.menu-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}
+
 .menu-lines {
     width: 30px;
     cursor: pointer;
@@ -33,10 +40,14 @@ body {
 .menu-lines span {
     display: block;
     height: 4px;
-    background: #fff;
+    background: red;
     margin: 6px 0;
     border-radius: 4px;
     transition: 0.4s;
+}
+/* HIDDEN MENU BY DEFAULT */
+.menu-popup {
+    display: none;
 }
 
 /* MESSAGE CARD */
@@ -690,9 +701,16 @@ menuDots.addEventListener("click", () => {
     menuPopup.style.display === "block" ? "none" : "block";
 });
 
-/* CLOSE WHEN CLICKING OUTSIDE */
+/* MENU TOGGLE */
+menuDots.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent immediate close
+  menuPopup.style.display =
+    menuPopup.style.display === "block" ? "none" : "block";
+});
+
+/* CLOSE MENU WHEN CLICKING OUTSIDE */
 document.addEventListener("click", (e) => {
-  if (!menuDots.contains(e.target) && !menuPopup.contains(e.target)) {
+  if (!menuPopup.contains(e.target) && !menuDots.contains(e.target)) {
     menuPopup.style.display = "none";
   }
 });
