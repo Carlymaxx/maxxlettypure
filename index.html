@@ -45,27 +45,27 @@ h1 {
     animation: fadeInDown 2s ease;
 }
 <button id="musicToggle" class="music-btn">🎵 Play Music</button>
-
-<audio id="bgMusic" loop>
-  <source src="your-song.mp3" type="audio/mpeg">
-</audio>
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  font-size: 16px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #ff5fa2, #ff8dc7);
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  z-index: 9999;
+ 9999;
 }
 
-.music-btn:active {
-  transform: scale(0.96);
+/* MUSIC PLAY / PAUSE */
+const musicBtn = document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
+
+let isPlaying = false;
+
+if (musicBtn && bgMusic) {
+  musicBtn.onclick = () => {
+    if (!isPlaying) {
+      bgMusic.play().catch(() => {});
+      musicBtn.textContent = "⏸ Pause Music";
+      isPlaying = true;
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = "🎵 Play Music";
+      isPlaying = false;
+    }
+  };
 }
 
 /* TYPEWRITER */
