@@ -358,20 +358,6 @@ body {
 
 <body>
 <script>
-
-if (musicBtn && bgMusic) {
-  musicBtn.onclick = () => {
-    if (!isPlaying) {
-      bgMusic.play().catch(() => {});
-      musicBtn.textContent = "⏸ Pause Maxx's favourite";
-      isPlaying = true;
-    } else {
-      bgMusic.pause();
-      musicBtn.textContent = "🎵 Play Maxx's favourite";
-      isPlaying = false;
-    }
-  };
-}
 </script>
 <!-- TOP RIGHT MENU -->
 <div class="menu-container">
