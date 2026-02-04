@@ -24,6 +24,61 @@ body {
     max-width: 800px;
     margin: auto;
 }
+/* THREE DOTS MENU */
+.menu-container {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu-dots {
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.menu-dots:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.menu-popup {
+    display: none;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 0 25px rgba(255, 79, 129, 0.5);
+}
+
+.menu-title {
+    color: #ff4ecd;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.menu-popup button {
+    width: 100%;
+    margin: 6px 0;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff4ecd, #6a5acd);
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: transform 0.2s;
+}
+
+.menu-popup button:hover {
+    transform: scale(1.05);
+}
 .youtube-wrapper {
     position: relative;
     width: 100%;
@@ -279,6 +334,18 @@ if (musicBtn && bgMusic) {
 </head>
 
 <body>
+<!-- THREE DOTS MENU -->
+<div class="menu-container">
+  <div class="menu-dots" id="menuDots">⋮</div>
+
+  <div class="menu-popup" id="menuPopup">
+    <p class="menu-title">Do you choose 💕</p>
+    <button onclick="choose('carly')">Carly</button>
+    <button onclick="choose('ochieng')">Ochieng</button>
+    <button onclick="choose('calvince')">Calvince</button>
+    <button onclick="choose('maxx')">Maxx</button>
+  </div>
+</div>
 
 <audio id="bgMusic" loop>
     <source src="my-wangu.mp3" type="audio/mpeg">
@@ -612,6 +679,43 @@ setInterval(() => {
   } else if (batteryEl) {
     batteryEl.textContent = "Not supported";
   }
+/* THREE DOTS MENU LOGIC */
+const menuDots = document.getElementById("menuDots");
+const menuPopup = document.getElementById("menuPopup");
+
+menuDots.addEventListener("click", () => {
+  menuPopup.style.display =
+    menuPopup.style.display === "block" ? "none" : "block";
+});
+
+/* CLOSE WHEN CLICKING OUTSIDE */
+document.addEventListener("click", (e) => {
+  if (!menuDots.contains(e.target) && !menuPopup.contains(e.target)) {
+    menuPopup.style.display = "none";
+  }
+});
+
+/* CHOICES */
+window.choose = function(name) {
+  let message = "";
+
+  if (name === "carly") {
+    message = "😂 Nooo baby… it’s Maxx 💖 always Maxx 😘";
+  } else if (name === "calvince") {
+    message = "😌 Maxx deserves this love 💕 no competition ✨";
+  } else if (name === "ochieng") {
+    message = "💞 Only Maxx is meant for you 💍❤️ forever";
+  } else if (name === "maxx") {
+    message =
+      "😭💖 Thank you my wife 😘💍\n\n" +
+      "With you forever 💕\n" +
+      "Please choose me over everything and everyone 🙏❤️\n" +
+      "Over billions of times ♾️😍\n\n" +
+      "I love you so so much 💖💖💖";
+  }
+
+  alert(message);
+};
 
   /* SCREEN RESOLUTION */
   const resEl = document.getElementById("resolution");
