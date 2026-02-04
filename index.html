@@ -18,6 +18,13 @@ body {
     overflow-x: hidden;
     transition: background 1s;
 }
+.menu-title {
+    color: #ffb6c1;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
 
 .container {
     padding: 40px 20px;
@@ -386,12 +393,12 @@ if (musicBtn && bgMusic) {
     <span></span>
   </div>
 
-  <div class="menu-popup" id="menuPopup">
-    <button onclick="choose('carly')">Carly</button>
-    <button onclick="choose('ochieng')">Ochieng</button>
-    <button onclick="choose('calvince')">Calvince</button>
-    <button onclick="choose('maxx')">Maxx</button>
-  </div>
+ <div class="menu-popup" id="menuPopup">
+  <div class="menu-title">💖 Baby Letty pick one 💖</div>
+  <button onclick="choose('carly')">Carly</button>
+  <button onclick="choose('ochieng')">Ochieng</button>
+  <button onclick="choose('calvince')">Calvince</button>
+  <button onclick="choose('maxx')">Maxx</button>
 </div>
 
 <audio id="bgMusic" loop>
@@ -739,32 +746,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menuDots = document.getElementById("menuDots");
   const menuPopup = document.getElementById("menuPopup");
+  const messageBox = document.getElementById("messageBox");
 
-  if (!menuDots || !menuPopup) {
-    console.error("Menu elements not found");
-    return;
-  }
-
-  /* TOGGLE MENU */
+  /* OPEN MENU */
   menuDots.addEventListener("click", (e) => {
     e.stopPropagation();
-
-    menuPopup.style.display =
-      menuPopup.style.display === "block" ? "none" : "block";
+    menuPopup.style.display = "block";
+    if (messageBox) messageBox.classList.remove("show");
   });
 
-  /* CLOSE WHEN CLICKING OUTSIDE */
-  document.addEventListener("click", (e) => {
-    if (!menuPopup.contains(e.target) && !menuDots.contains(e.target)) {
-      menuPopup.style.display = "none";
-    }
+  /* CLICK OUTSIDE CLOSES EVERYTHING */
+  document.addEventListener("click", () => {
+    menuPopup.style.display = "none";
+    if (messageBox) messageBox.classList.remove("show");
   });
+
+  /* PREVENT INSIDE CLICKS FROM CLOSING */
+  menuPopup.addEventListener("click", (e) => e.stopPropagation());
+  if (messageBox) messageBox.addEventListener("click", (e) => e.stopPropagation());
 
 });
-const messageBox = document.getElementById("messageBox");
-const messageText = document.getElementById("messageText");
 
+/* CHOICE HANDLER */
 window.choose = function(name) {
+  const messageBox = document.getElementById("messageBox");
+  const messageText = document.getElementById("messageText");
+  const menuPopup = document.getElementById("menuPopup");
+
   let message = "";
 
   if (name === "carly") {
@@ -780,22 +788,17 @@ window.choose = function(name) {
     message =
       "😭💖 Thank you my wife 😘💍\n\n" +
       "With you forever 💕\n" +
-      "Please choose me over everything & everyone 🙏❤️\n" +
-      "Over billions of times ♾️😍\n\n" +
+      "Choose me over everything & everyone ♾️❤️\n\n" +
       "I love you so so much 💖💖💖";
   }
 
   messageText.textContent = message;
 
-  // restart animation
+  menuPopup.style.display = "none";
   messageBox.classList.remove("show");
   void messageBox.offsetWidth;
   messageBox.classList.add("show");
-
-  // close menu after selection
-  menuPopup.style.display = "none";
 };
-
   /* SCREEN RESOLUTION */
   const resEl = document.getElementById("resolution");
   function updateResolution(){
