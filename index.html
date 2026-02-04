@@ -381,50 +381,125 @@ My one and only, my love, my sweet 💘
   </iframe>
 </div>
 
-/* TYPEWRITER */
-const messages = ["Hey Letty 💕","This page is for you 🌷","Maxx thinks you're amazing 💖","Happy Valentine 💝"];
-let msgIndex = 0, charIndex = 0;
-const typeDiv = document.getElementById("typewriter");
-(function typeEffect(){
-    if(charIndex < messages[msgIndex].length){
-        typeDiv.textContent += messages[msgIndex][charIndex++];
-        setTimeout(typeEffect,70);
-    }else{
-        setTimeout(()=>{typeDiv.textContent=""; charIndex=0; msgIndex=(msgIndex+1)%messages.length; typeEffect();},2000);
+<footer style="margin:40px 0;opacity:0.85;">
+  ©2026 love maxxLetty | Made with love & care 🌷
+</footer>
+
+</div> <!-- END .container -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* TYPEWRITER */
+  const messages = [
+    "Hey Letty 💕",
+    "This page is for you 🌷",
+    "Maxx thinks you're amazing 💖",
+    "Happy Valentine 💝"
+  ];
+
+  let msgIndex = 0, charIndex = 0;
+  const typeDiv = document.getElementById("typewriter");
+
+  function typeEffect(){
+    if (!typeDiv) return;
+
+    if (charIndex < messages[msgIndex].length){
+      typeDiv.textContent += messages[msgIndex][charIndex++];
+      setTimeout(typeEffect, 70);
+    } else {
+      setTimeout(() => {
+        typeDiv.textContent = "";
+        charIndex = 0;
+        msgIndex = (msgIndex + 1) % messages.length;
+        typeEffect();
+      }, 2000);
     }
-})();
+  }
+  typeEffect();
 
-/* HEARTS */
-setInterval(()=>{
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤";
-    h.style.left=Math.random()*100+"vw";
-    h.style.fontSize=16+Math.random()*20+"px";
+  /* HEARTS */
+  setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = 16 + Math.random() * 20 + "px";
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(),7000);
-},400);
+    setTimeout(() => h.remove(), 7000);
+  }, 400);
 
-/* MUSIC */
-playMusicBtn.onclick=()=>{bgMusic.play(); playMusicBtn.style.display="none";};
+  /* MUSIC */
+  const playMusicBtn = document.getElementById("playMusicBtn");
+  const bgMusic = document.getElementById("bgMusic");
+  if (playMusicBtn && bgMusic) {
+    playMusicBtn.onclick = () => {
+      bgMusic.play().catch(() => {});
+      playMusicBtn.style.display = "none";
+    };
+  }
 
-/* REVEAL */
-revealBtn.onclick=()=>{secretSection.style.display="block"; secretSection.scrollIntoView({behavior:"smooth"});};
+  /* REVEAL */
+  const revealBtn = document.getElementById("revealBtn");
+  const secretSection = document.getElementById("secretSection");
+  if (revealBtn && secretSection) {
+    revealBtn.onclick = () => {
+      secretSection.style.display = "block";
+      secretSection.scrollIntoView({ behavior: "smooth" });
+    };
+  }
 
-/* DATE & TIME */
-function updateDateTime(){const now=new Date();document.getElementById("dateTime").textContent=now.toLocaleDateString()+", "+now.toLocaleTimeString();}
-setInterval(updateDateTime,1000); updateDateTime();
+  /* DATE & TIME */
+  const dateTimeEl = document.getElementById("dateTime");
+  function updateDateTime(){
+    if (!dateTimeEl) return;
+    const now = new Date();
+    dateTimeEl.textContent =
+      now.toLocaleDateString() + ", " + now.toLocaleTimeString();
+  }
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
 
-/* NETWORK STATUS */
-function updateNetwork(){let status=navigator.onLine?"Online":"Offline"; let conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(conn&&conn.downlink) status += ` (${conn.effectiveType} ~${conn.downlink} Mbps)`; document.getElementById("networkStatus").textContent=status;}
-window.addEventListener("online",updateNetwork); window.addEventListener("offline",updateNetwork); updateNetwork();
+  /* NETWORK STATUS */
+  const networkEl = document.getElementById("networkStatus");
+  function updateNetwork(){
+    if (!networkEl) return;
+    let status = navigator.onLine ? "Online" : "Offline";
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn && conn.downlink) {
+      status += ` (${conn.effectiveType} ~${conn.downlink} Mbps)`;
+    }
+    networkEl.textContent = status;
+  }
+  window.addEventListener("online", updateNetwork);
+  window.addEventListener("offline", updateNetwork);
+  updateNetwork();
 
-/* BATTERY STATUS */
-if(navigator.getBattery){navigator.getBattery().then(battery=>{function updateBattery(){document.getElementById("batteryStatus").textContent=Math.round(battery.level*100)+"%";}updateBattery(); battery.addEventListener("levelchange",updateBattery);});} else{document.getElementById("batteryStatus").textContent="Not supported";}
+  /* BATTERY */
+  const batteryEl = document.getElementById("batteryStatus");
+  if (navigator.getBattery && batteryEl) {
+    navigator.getBattery().then(battery => {
+      function updateBattery(){
+        batteryEl.textContent = Math.round(battery.level * 100) + "%";
+      }
+      updateBattery();
+      battery.addEventListener("levelchange", updateBattery);
+    });
+  } else if (batteryEl) {
+    batteryEl.textContent = "Not supported";
+  }
 
-/* SCREEN RESOLUTION */
-function updateResolution(){document.getElementById("resolution").textContent=window.innerWidth+" × "+window.innerHeight;}
-window.addEventListener("resize",updateResolution); updateResolution();
+  /* SCREEN RESOLUTION */
+  const resEl = document.getElementById("resolution");
+  function updateResolution(){
+    if (!resEl) return;
+    resEl.textContent = window.innerWidth + " × " + window.innerHeight;
+  }
+  window.addEventListener("resize", updateResolution);
+  updateResolution();
+
+});
 </script>
+
 </body>
 </html>
