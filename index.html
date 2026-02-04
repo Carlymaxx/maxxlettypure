@@ -260,6 +260,7 @@ if (musicBtn && bgMusic) {
 
     <!-- BUTTONS -->
     <button class="btn" id="playMusicBtn">🎵 Play My Favourite Music 🎵</button>
+<button class="btn" id="musicToggle">🎵 Play Music</button>
     <button class="btn" id="revealBtn">💖 Baby Letty click here for Hubby💖</button>
 
     <div class="secret-section" id="secretSection">
@@ -461,6 +462,25 @@ document.addEventListener("DOMContentLoaded", () => {
       playMusicBtn.style.display = "none";
     };
   }
+/* PLAY / PAUSE MUSIC */
+const musicBtn = document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
+
+let isPlaying = false;
+
+if (musicBtn && bgMusic) {
+  musicBtn.addEventListener("click", () => {
+    if (!isPlaying) {
+      bgMusic.play().catch(() => {});
+      musicBtn.textContent = "⏸ Pause Music";
+      isPlaying = true;
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = "🎵 Play Music";
+      isPlaying = false;
+    }
+  });
+}
 
   /* REVEAL */
   const revealBtn = document.getElementById("revealBtn");
