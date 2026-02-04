@@ -451,15 +451,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => h.remove(), 7000);
   }, 400);
 
-  /* MUSIC */
-  const playMusicBtn = document.getElementById("playMusicBtn");
-  const bgMusic = document.getElementById("bgMusic");
-  if (playMusicBtn && bgMusic) {
-    playMusicBtn.onclick = () => {
-      bgMusic.play().catch(() => {});
-      playMusicBtn.style.display = "none";
-    };
-  }
 /* PLAY / PAUSE MUSIC */
 const musicBtn = document.getElementById("musicToggle");
 const bgMusic = document.getElementById("bgMusic");
