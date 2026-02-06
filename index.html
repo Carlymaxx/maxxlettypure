@@ -27,6 +27,74 @@ body {
     max-width: 800px;
     margin: auto;
 }
+.site-footer {
+  background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  color: #ffffff;
+  padding: 50px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.site-footer h3 {
+  color: #ffd166;
+  margin-bottom: 12px;
+}
+
+.site-footer p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.location {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer-links a:hover {
+  color: #ffd166;
+  opacity: 1;
+}
+
+.footer-love p {
+  color: #ffccd5;
+  font-style: italic;
+}
+
+.footer-connect p {
+  color: #cde4ff;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
 
 /* ===== HEADINGS ===== */
 h1 {
@@ -244,6 +312,56 @@ p {
 </div>
 
 <footer style="margin:40px 0;opacity:0.85;">©2026 love maxxLetty | Made with love & care ✨</footer>
+
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-about">
+      <h3>About Maxx & Letty ❤️</h3>
+      <p>
+        A story of connection, trust, and genuine love.
+        Maxx and Letty share a bond built on honesty, care, and loyalty.
+      </p>
+      <p class="location">📍 Nairobi, Kenya</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Memories</a></li>
+        <li><a href="#">Moments</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-love">
+      <h3>Letty 💖</h3>
+      <p>
+        You are chosen.<br>
+        You are pure.<br>
+        You are loved.<br><br>
+        You are mine and I love you.<br>
+        <strong>Maxx & Letty — inseparable.</strong>
+      </p>
+    </div>
+
+    <div class="footer-connect">
+      <h3>Connect With</h3>
+      <p>
+        Maxx ❤️ Letty<br>
+        Two hearts, one direction.<br>
+        Forever connected.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 • Maxx ❤️ Letty • They are inseparable</p>
+  </div>
+</footer>
 
 <script>
 // TYPEWRITER
