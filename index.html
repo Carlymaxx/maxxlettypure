@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Dancing+Script&family=Lobster&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Happy Valentine ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,35 +104,49 @@ body {
   border-radius: 20px;                 /* optional, for nice rounded boxes */
   padding: 20px;                       /* ensure content has space */
 }
-/* ===== ANIMATED HAPPY VALENTINE HEADING ===== */
+/* ===== ANIMATED HAPPY VALENTINE HEADING: COLOR + FONT ===== */
 h1 {
-    font-family: 'Great Vibes', cursive;
     font-size: 48px;
     font-weight: 700;
     text-align: center;
 
-    /* Rainbow gradient */
+    /* Initial gradient for text */
     background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #6a5acd, #ff4d6d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    /* Animations */
-    animation: colorFlow 6s linear infinite, fadeInDown 2s ease, pulseText 2s ease-in-out infinite;
+    /* Animate color, font, scale */
+    animation: valentineAnim 12s ease-in-out infinite, fadeInDown 2s ease;
 }
 
-/* Color gradient movement */
-@keyframes colorFlow {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ANIMATION KEYFRAMES */
+@keyframes valentineAnim {
+  0% {
+    font-family: 'Great Vibes', cursive;
+    background: linear-gradient(90deg, #ff4d6d, #ff9f1c);
+    transform: scale(1);
+  }
+  25% {
+    font-family: 'Pacifico', cursive;
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    transform: scale(1.05);
+  }
+  50% {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(90deg, #ff7f50, #ff4500);
+    transform: scale(1.1);
+  }
+  75% {
+    font-family: 'Lobster', cursive;
+    background: linear-gradient(90deg, #c71585, #8b008b);
+    transform: scale(1.05);
+  }
+  100% {
+    font-family: 'Great Vibes', cursive;
+    background: linear-gradient(90deg, #ff4d6d, #ff9f1c);
+    transform: scale(1);
+  }
 }
-
-/* Gentle pulsing effect */
-@keyframes pulseText {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
-}
-
 /* ===== HEADINGS ===== */
 h1 {
     font-family: 'Great Vibes', cursive;
