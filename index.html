@@ -96,6 +96,13 @@ body {
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 15px;
 }
+.container, .card, .site-footer {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); /* Safari */
+  background: rgba(0,0,0,0.25);       /* translucent dark layer */
+  border-radius: 20px;                 /* optional, for nice rounded boxes */
+  padding: 20px;                       /* ensure content has space */
+}
 
 /* ===== HEADINGS ===== */
 h1 {
