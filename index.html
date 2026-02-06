@@ -106,19 +106,52 @@ body {
 }
 /* ===== ANIMATED HAPPY VALENTINE HEADING: COLOR + FONT ===== */
 h1 {
+    font-family: 'Great Vibes', cursive; /* starting font */
     font-size: 48px;
     font-weight: 700;
     text-align: center;
 
-    /* Initial gradient for text */
+    /* Gradient text */
     background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #6a5acd, #ff4d6d);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    /* Animate color, font, scale */
-    animation: valentineAnim 12s ease-in-out infinite, fadeInDown 2s ease;
+    /* Animations: color flow, font change, pulsing, fade-in */
+    animation: 
+        colorFlow 6s ease infinite, 
+        fontFlow 12s ease-in-out infinite, 
+        pulseText 2s ease-in-out infinite, 
+        fadeInDown 2s ease;
 }
 
+/* Smooth gradient movement */
+@keyframes colorFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Font switch animation (instant change at intervals) */
+@keyframes fontFlow {
+  0%   { font-family: 'Great Vibes', cursive; }
+  25%  { font-family: 'Pacifico', cursive; }
+  50%  { font-family: 'Dancing Script', cursive; }
+  75%  { font-family: 'Lobster', cursive; }
+  100% { font-family: 'Great Vibes', cursive; }
+}
+
+/* Gentle pulsing effect */
+@keyframes pulseText {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* Fade in from top */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 /* ANIMATION KEYFRAMES */
 @keyframes valentineAnim {
   0% {
