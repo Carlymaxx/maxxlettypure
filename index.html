@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Valentine ðŸ’</title>
+<title>Happy Valentine ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- FONTS -->
@@ -27,56 +27,6 @@ body {
     padding: 40px 20px;
     max-width: 800px;
     margin: auto;
-}
-
-/* ===== HEADINGS ===== */
-h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 48px;
-    animation: fadeInDown 2s ease;
-}
-..lyrics-box-floating {
-  position: fixed;
-  top: 15%;
-  right: 20px;
-  width: 320px;
-  max-height: 70%;
-  overflow-y: auto;
-  padding: 20px;
-  background-color: #0d1b2a; /* dark blue */
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  color: #fff;
-  z-index: 9999;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.5;
-}
-.container, .card, .site-footer {
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,0.25);
-}
-
-/* Rainbow letters */
-.rainbow-lyrics span {
-  display: inline-block;
-  animation: rainbowMove 4s linear infinite;
-  background: linear-gradient(0deg, #ff4d6d, #ff9f1c, #6a5acd, #ff4d6d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation-delay: calc(var(--i) * 0.05s);
-}
-
-@keyframes rainbowMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 200%; }
-}
-
-/* ===== PARAGRAPH ===== */
-p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
 }
 .site-footer {
   background: linear-gradient(135deg, #0d1b2a, #1b263b);
@@ -147,6 +97,34 @@ p {
   padding-top: 15px;
 }
 
+/* ===== HEADINGS ===== */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    animation: fadeInDown 2s ease;
+}
+
+.rainbow-lyrics span {
+  display: inline-block;
+  animation: rainbowMove 4s linear infinite;
+  background: linear-gradient(0deg, #ff4d6d, #ff9f1c, #6a5acd, #ff4d6d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes rainbowMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 200%; }
+}
+
+/* ===== PARAGRAPH ===== */
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
 /* ===== MENU ===== */
 .menu-container {
     position: fixed;
@@ -154,10 +132,7 @@ p {
     right: 15px;
     z-index: 9999;
 }
-.menu-lines {
-    width: 30px;
-    cursor: pointer;
-}
+.menu-lines { width: 30px; cursor: pointer; }
 .menu-lines span {
     display: block;
     height: 4px;
@@ -177,12 +152,7 @@ p {
     display: none;
     z-index: 9999;
 }
-.menu-title {
-    color: #ffb6c1;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 15px;
-}
+.menu-title { color: #ffb6c1; font-weight: bold; margin-bottom: 10px; font-size: 15px; }
 .menu-popup button {
     width: 100%;
     background: transparent;
@@ -211,46 +181,12 @@ p {
     transition: all 0.6s ease;
     z-index: 9998;
 }
-.message-box.show {
-    transform: rotateY(0deg) scale(1);
-    opacity: 1;
-}
+.message-box.show { transform: rotateY(0deg) scale(1); opacity: 1; }
 .message-box h3 { margin-top: 0; color:#ffd700; text-align:center; }
 .message-box p { font-size:0.95em; line-height:1.4em; white-space: pre-line; }
 
 /* ===== TYPEWRITER ===== */
 .typewriter { font-size: 1.2em; min-height: 80px; margin: 20px 0; }
-
-/* ===== CARD ===== */
-.card {
-    background: rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 25px;
-    margin-top: 30px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
-}
-.card img { width:100%; max-width:320px; border-radius:15px; margin:15px 0; animation:pulse 3s infinite; }
-.card p:hover { transform: scale(1.05); background: rgba(255,255,255,0.25); padding:10px; border-radius:15px; transition:0.3s; }
-
-/* ===== BUTTONS ===== */
-.btn {
-    margin-top:25px;
-    padding:14px 30px;
-    font-size:1.05em;
-    font-family:'Orbitron','Poppins',sans-serif;
-    border:none;
-    border-radius:35px;
-    color:#fff;
-    cursor:pointer;
-    transition:all 0.3s ease;
-}
-#musicToggle { background:linear-gradient(135deg,#ff4ecd,#6a5acd); box-shadow:0 0 15px rgba(255,78,205,0.6),0 0 30px rgba(106,90,205,0.4); }
-#revealBtn { background:linear-gradient(135deg,#ff512f,#dd2476); box-shadow:0 0 15px rgba(255,81,47,0.6),0 0 30px rgba(221,36,118,0.4); }
-
-@keyframes colorFlow {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 200%; }
-}
 @keyframes softColorFlow {
 
   /* BLUES */
@@ -305,6 +241,32 @@ p {
   100% { background-color: #cce6ff; }
 }
 
+/* ===== CARD ===== */
+.card {
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+.card img { width:100%; max-width:320px; border-radius:15px; margin:15px 0; animation:pulse 3s infinite; }
+.card p:hover { transform: scale(1.05); background: rgba(255,255,255,0.25); padding:10px; border-radius:15px; transition:0.3s; }
+
+/* ===== BUTTONS ===== */
+.btn {
+    margin-top:25px;
+    padding:14px 30px;
+    font-size:1.05em;
+    font-family:'Orbitron','Poppins',sans-serif;
+    border:none;
+    border-radius:35px;
+    color:#fff;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+#musicToggle { background:linear-gradient(135deg,#ff4ecd,#6a5acd); box-shadow:0 0 15px rgba(255,78,205,0.6),0 0 30px rgba(106,90,205,0.4); }
+#revealBtn { background:linear-gradient(135deg,#ff512f,#dd2476); box-shadow:0 0 15px rgba(255,81,47,0.6),0 0 30px rgba(221,36,118,0.4); }
+
 /* ===== SECRET SECTION ===== */
 .secret-section { display:none; margin-top:20px; text-align:left; line-height:1.6; background: rgba(255,255,255,0.08); border-radius:20px; padding:20px; max-height:400px; overflow-y:auto; }
 .secret-section p:hover { transform: scale(1.05); background: rgba(255,255,255,0.15); padding:8px; border-radius:10px; transition:0.3s; }
@@ -328,15 +290,69 @@ p {
 @keyframes rise { from{transform:translateY(0);opacity:1;} to{transform:translateY(-110vh);opacity:0;} }
 @keyframes fadeInDown { from{opacity:0;transform:translateY(-30px);} to{opacity:1;transform:translateY(0);} }
 @keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+@keyframes softColorFlow {
+
+  /* BLUES */
+  0%   { background-color: #cce6ff; }   /* light blue */
+  3%   { background-color: #80bfff; }
+  6%   { background-color: #3399ff; }
+  9%   { background-color: #0066cc; }
+  12%  { background-color: #003366; }
+
+  /* PURPLES */
+  15%  { background-color: #e6ccff; }
+  18%  { background-color: #b380ff; }
+  21%  { background-color: #7f3fff; }
+  24%  { background-color: #4b0082; }
+
+  /* PINKS */
+  27%  { background-color: #ffd6e7; }
+  30%  { background-color: #ff99c8; }
+  33%  { background-color: #ff4d94; }
+  36%  { background-color: #cc0052; }
+
+  /* REDS */
+  39%  { background-color: #ffcccc; }
+  42%  { background-color: #ff6666; }
+  45%  { background-color: #ff1a1a; }
+  48%  { background-color: #990000; }
+
+  /* ORANGES */
+  51%  { background-color: #ffe0cc; }
+  54%  { background-color: #ffb380; }
+  57%  { background-color: #ff8533; }
+  60%  { background-color: #cc5200; }
+
+  /* YELLOWS */
+  63%  { background-color: #fff7cc; }
+  66%  { background-color: #ffeb80; }
+  69%  { background-color: #ffd633; }
+  72%  { background-color: #b38f00; }
+
+  /* GREENS */
+  75%  { background-color: #d6f5d6; }
+  78%  { background-color: #85e085; }
+  81%  { background-color: #33cc33; }
+  84%  { background-color: #1f7a1f; }
+
+  /* TEALS */
+  87%  { background-color: #ccf2f2; }
+  90%  { background-color: #66d9d9; }
+  93%  { background-color: #009999; }
+
+  /* RETURN TO START */
+  100% { background-color: #cce6ff; }
+}
+
 </style>
 </head>
+<body>
 
 <!-- TOP RIGHT MENU -->
 <div class="menu-container">
   <div class="menu-lines" id="menuDots"><span></span><span></span><span></span></div>
-
   <div class="menu-popup" id="menuPopup">
-    <div class="menu-title">ðŸ’– Baby Letty pick one ðŸ’–</div>
+    <div class="menu-title">❤️ Baby Letty pick one ❤️</div>
     <button onclick="choose('carly')">Carly</button>
     <button onclick="choose('ochieng')">Ochieng</button>
     <button onclick="choose('calvince')">Calvince</button>
@@ -346,7 +362,7 @@ p {
 
 <!-- MESSAGE BOX -->
 <div class="message-box" id="messageBox">
-  <h3>ðŸ’– Message</h3>
+  <h3>❤️ Message</h3>
   <p id="messageText"></p>
 </div>
 
@@ -356,43 +372,44 @@ p {
 </audio>
 
 <div class="container">
-  <h1>Happy Valentine ðŸ’</h1>
+  <h1>Happy Valentine ❤️</h1>
   <div class="typewriter" id="typewriter"></div>
 
   <div class="card">
     <img src="https://files.catbox.moe/8jx0q3.jpg" alt="Letty">
-    <p>You are special and appreciated ðŸŒ·<br>Always keep believing in yourself âœ¨<br>Nakupenda my wangu ðŸ¥°</p>
-    <div class="signature">â€” From Maxx ðŸ’–</div>
+    <p>You are special and appreciated ✨<br>Always keep believing in yourself ✨<br>Nakupenda my wangu 😘</p>
+    <div class="signature">— From Maxx ❤️</div>
   </div>
 
   <!-- VIDEO -->
   <div class="video-wrapper">
     <video src="https://files.catbox.moe/5w8s1c.mp4" autoplay loop muted playsinline controls></video>
     <div class="video-text-below">
-      I enjoy every moment with you, Miemie ðŸ’•<br>Your natural smile and real self are what I adore âœ¨<br>Every clip makes me happy ðŸ’–
+      I enjoy every moment with you, Miemie 💕<br>Your natural smile and real self are what I adore ✨<br>Every clip makes me happy ❤️
     </div>
   </div>
-  <!-- Your buttons -->
-  <button class="btn" id="musicToggle"> Play Music</button>
-  <button class="btn" id="revealBtn"> Baby Letty click here for Hubby </button>
+
+  <!-- BUTTONS -->
+  <button class="btn" id="musicToggle">🎵 Play Music</button>
+  <button class="btn" id="revealBtn">💖 Baby Letty click here for Hubby 💖</button>
+
   <!-- SECRET SECTION -->
   <div class="secret-section" id="secretSection">
-    <h2>ðŸ’Œ si kwa ubaya but nkiandika kwa kijaluo ndo nashuku unaeza elewa feelings zanguðŸ’Œ</h2>
-            <p>Letty aheri gi chunya mar adier,,,,imora jaoda,,,hera ni meda teko. kendo awinjo ka chunya lit sa mora amora ma pacha oparo ni inyalo weya </p>
-        <p>akuai ni ibed koda nyakachien'g ,,,,nekech an aseng'ado ni ok anyal bedo gi mora mora kaok in miemie na </p>
-        <p>Agombo nipar diriyo kaka aheri gingimana tee to inbe ing'ade chunyi niokinyal weya kenda</p>
-        <p>hera ma imiya okwee kendo nigi ber,,,Letty akia kaka anyalo nyisi to aheri adier,,,aheri makia kaka anyisi </p>
-        <p>sama naneni mokwongo neok ang'eyo nanyalo heri kamaye,,ok anyal wacho ni ahero wengeni,,,,kata dimple ni,,,,,, kata ogwandi,,,,,, kata ng'uti...mano awuondora,,,,what if kachieng moro by accidentally gikma ahero kuomi oruma kata ohinyore.. bende de aheri kendo minwa?</p>
-        <p>An aheri letty,,,,aheri kaka inno emomiyo kanyisi kata niorna picha ni kata video... plz akwai kikitigi filters.. aheri kaka in,,,,kaka naneni gi wang'a diereka ,,,,ahero kaneni kaka in ...kama hujachana nyewele,kama umeparara,kama umevaa vibaya,,kama hujaosha uso ,,,aheri kamano nikech an ema ang'eyo ber ni ,,,,just avoid filters u perfect with your natual look </p>
-        <p>Miemie, your natural self is my favourite thing </p>
+    <h2>💖 si kwa ubaya but nkiandika kwa kijaluo ndo nashuku unaeza elewa feelings zangu 💖</h2>
+    <p>Letty aheri gi chunya mar adier,,,,imora jaoda,,,hera ni meda teko. kendo awinjo ka chunya lit sa mora amora ma pacha oparo ni inyalo weya ❤️</p>
+    <p>akuai ni ibed koda nyakachien'g ,,,,nekech an aseng'ado ni ok anyal bedo gi mora mora kaok in miemie na ❤️❤️</p>
+    <p>Agombo nipar diriyo kaka aheri gingimana tee to inbe ing'ade chunyi niokinyal weya kenda❤️</p>
+    <p>hera ma imiya okwee kendo nigi ber,,,Letty akia kaka anyalo nyisi to aheri adier,,,aheri makia kaka anyisi ❤️</p>
+    <p>sama naneni mokwongo neok ang'eyo nanyalo heri kamaye,,ok anyal wacho ni ahero wengeni,,,,kata dimple ni,,,,,, kata ogwandi,,,,,, kata ng'uti...mano awuondora,,,,what if kachieng moro by accidentally gikma ahero kuomi oruma kata ohinyore.. bende de aheri kendo minwa?❤️</p>
+    <p>An aheri letty,,,,aheri kaka inno emomiyo kanyisi kata niorna picha ni kata video... plz akwai kikitigi filters.. aheri kaka in,,,,kaka naneni gi wang'a diereka ,,,,ahero kaneni kaka in ...kama hujachana nyewele,kama umeparara,kama umevaa vibaya,,kama hujaosha uso ,,,aheri kamano nikech an ema ang'eyo ber ni ,,,,just avoid filters u perfect with your natural look ❤️</p>
+    <p>Miemie, your natural self is my favourite thing ❤️</p>
   </div>
-  <body>
 
   <!-- FINAL IMAGE -->
   <div class="bottom-image-wrapper">
     <img src="https://files.catbox.moe/9d71as.jpg" alt="Letty Maxx Love">
     <div class="bottom-image-text">
-      Letty, Maxx anakupenda sana ðŸ’•<br>No man will ever love you like I do âœ¨<br>You are my heart, my sunshine, my everything ðŸŒ¹
+      Letty, Maxx anakupenda sana 💕<br>No man will ever love you like I do ✨<br>You are my heart, my sunshine, my everything ❤️
     </div>
   </div>
 </div>
@@ -401,18 +418,19 @@ p {
 <div class="youtube-wrapper">
   <iframe src="https://www.youtube.com/embed/_b-nVhD2BuM?rel=0" title="YouTube Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-<footer style="margin:40px 0;opacity:0.85;">Â©2026 love maxxLetty | Made with love & care 😍·</footer>
+
+<footer style="margin:40px 0;opacity:0.85;">©2026 love maxxLetty | Made with love & care ✨</footer>
 
 <footer class="site-footer">
   <div class="footer-container">
 
     <div class="footer-about">
-      <h3>About Maxx & Letty </h3>
+      <h3>About Maxx & Letty ❤️</h3>
       <p>
         A story of connection, trust, and genuine love.
         Maxx and Letty share a bond built on honesty, care, and loyalty.
       </p>
-      <p class="location"> Nairobi, Kenya</p>
+      <p class="location">📍our lovely , heart</p>
     </div>
 
     <div class="footer-links">
@@ -427,7 +445,7 @@ p {
     </div>
 
     <div class="footer-love">
-      <h3>Letty </h3>
+      <h3>Letty 💖</h3>
       <p>
         You are chosen.<br>
         You are pure.<br>
@@ -440,7 +458,7 @@ p {
     <div class="footer-connect">
       <h3>Connect With</h3>
       <p>
-        Maxx  Letty<br>
+        Maxx ❤️ Letty<br>
         Two hearts, one direction.<br>
         Forever connected.
       </p>
@@ -449,15 +467,21 @@ p {
   </div>
 
   <div class="footer-bottom">
-    <p>© 2026 • Maxx  Letty • They are inseparable</p>
+    <p>© 2026 • Maxx ❤️ Letty • They are inseparable</p>
   </div>
 </footer>
 
 <script>
 // TYPEWRITER
-document.addEventListener("DOMContentLoaded", () => {// 
-  const messages = 
-["Hey Letty ðŸ’•","This page is for you ðŸŒ·","Maxx thinks you're amazing ðŸ’–","Happy Valentine ðŸ’"];
+document.addEventListener("DOMContentLoaded", () => {
+
+  // TYPEWRITER
+  const messages = [
+    "Hey Letty 💕",
+    "This page is for you ✨",
+    "Maxx thinks you're amazing ❤️",
+    "Happy Valentine ❤️"
+  ];
   let msgIndex = 0, charIndex = 0;
   const typeDiv = document.getElementById("typewriter");
   function typeEffect() {
@@ -466,74 +490,76 @@ document.addEventListener("DOMContentLoaded", () => {//
       typeDiv.textContent += messages[msgIndex][charIndex++];
       setTimeout(typeEffect, 70);
     } else {
-      setTimeout(() => { typeDiv.textContent=""; charIndex=0; msgIndex=(msgIndex+1)%messages.length; typeEffect(); },2000);
+      setTimeout(() => {
+        typeDiv.textContent = "";
+        charIndex = 0;
+        msgIndex = (msgIndex + 1) % messages.length;
+        typeEffect();
+      }, 2000);
     }
   }
   typeEffect();
-  
-  // Select the lyrics paragraph
-  const lyrics = document.querySelector('.rainbow-lyrics');
-  if (lyrics) {
-    const text = lyrics.textContent;
-    lyrics.innerHTML = ''; // clear original text
-    // wrap each character in a span
-    for (let i = 0; i < text.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = text[i];
-      span.style.setProperty('--i', i); // delay per letter
-      lyrics.appendChild(span);
-    }
-  }
 
   // HEARTS
   setInterval(() => {
     const h = document.createElement("div");
-    h.className="heart";
-    h.textContent="â¤";
-    h.style.left=Math.random()*100+"vw";
-    h.style.fontSize=16+Math.random()*20+"px";
+    h.className = "heart";
+    h.textContent = "❤";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = 16 + Math.random() * 20 + "px";
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(),7000);
-  },400);
+    setTimeout(() => h.remove(), 7000);
+  }, 400);
 
   // MUSIC
-  const musicBtn=document.getElementById("musicToggle");
-  const bgMusic=document.getElementById("bgMusic");
-  let isPlaying=false;
-  if(musicBtn && bgMusic){musicBtn.addEventListener("click",()=>{if(!isPlaying){bgMusic.play().catch(()=>{});musicBtn.textContent="â¸ Pause Maxx's favourite";isPlaying=true;}else{bgMusic.pause();musicBtn.textContent="ðŸŽµ Play Maxx's favourite";isPlaying=false;}});}
-
-  // REVEAL
-  const revealBtn=document.getElementById("revealBtn");
-  const secretSection=document.getElementById("secretSection");
-  if(revealBtn && secretSection){revealBtn.onclick=()=>{secretSection.style.display="block";secretSection.scrollIntoView({behavior:"smooth"});};}
-
-  // MENU + MESSAGE
-  const menuDots=document.getElementById("menuDots");
-  const menuPopup=document.getElementById("menuPopup");
-  const messageBox=document.getElementById("messageBox");
-  if(menuDots && menuPopup && messageBox){
-    menuDots.addEventListener("click",e=>{e.stopPropagation(); menuPopup.style.display="block"; messageBox.classList.remove("show");});
-    document.addEventListener("click",()=>{menuPopup.style.display="none"; messageBox.classList.remove("show");});
-    menuPopup.addEventListener("click",e=>e.stopPropagation());
-    messageBox.addEventListener("click",e=>e.stopPropagation());
+  const musicBtn = document.getElementById("musicToggle");
+  const bgMusic = document.getElementById("bgMusic");
+  let isPlaying = false;
+  if (musicBtn && bgMusic) {
+    musicBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        bgMusic.play().catch(() => {});
+        musicBtn.textContent = "⏸ Pause Maxx's favourite";
+        isPlaying = true;
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵 Play Maxx's favourite";
+        isPlaying = false;
+      }
+    });
   }
 
-  // SCREEN SIZE
-  const resEl=document.getElementById("resolution");
-  function updateResolution(){if(resEl) resEl.textContent=`${window.innerWidth} Ã— ${window.innerHeight}`;}
-  window.addEventListener("resize",updateResolution);
-  updateResolution();
+  // REVEAL SECRET
+  const revealBtn = document.getElementById("revealBtn");
+  const secretSection = document.getElementById("secretSection");
+  if (revealBtn && secretSection) {
+    revealBtn.onclick = () => {
+      secretSection.style.display = "block";
+      secretSection.scrollIntoView({behavior: "smooth"});
+    };
+  }
+
+  // MENU + MESSAGE
+  const menuDots = document.getElementById("menuDots");
+  const menuPopup = document.getElementById("menuPopup");
+  const messageBox = document.getElementById("messageBox");
+  if (menuDots && menuPopup && messageBox) {
+    menuDots.addEventListener("click", e => { e.stopPropagation(); menuPopup.style.display="block"; messageBox.classList.remove("show"); });
+    document.addEventListener("click", () => { menuPopup.style.display="none"; messageBox.classList.remove("show"); });
+    menuPopup.addEventListener("click", e => e.stopPropagation());
+    messageBox.addEventListener("click", e => e.stopPropagation());
+  }
 
   // CHOICE HANDLER
-  window.choose=function(name){
-    const messageText=document.getElementById("messageText");
-    let message="";
-    if(name==="carly") message="ðŸ˜‚ Nooo babyâ€¦ itâ€™s Maxx ðŸ’–\nAlways Maxx ðŸ˜˜";
-    else if(name==="calvince") message="ðŸ˜Œ Maxx deserves this love ðŸ’•\nNo competition âœ¨";
-    else if(name==="ochieng") message="ðŸ’ž Only Maxx is meant for you ðŸ’â¤ï¸\nForever & always";
-    else if(name==="maxx") message="ðŸ˜­ðŸ’– Thank you my wife ðŸ˜˜ðŸ’\nWith you forever ðŸ’•\nI love you so so much ðŸ’–ðŸ’–ðŸ’–";
-    messageText.textContent=message;
-    menuPopup.style.display="none";
+  window.choose = function(name) {
+    const messageText = document.getElementById("messageText");
+    let message = "";
+    if(name==="carly") message="😂 Nooo baby… it’s Maxx ❤️\nAlways Maxx 😘";
+    else if(name==="calvince") message="😌 Maxx deserves this love 💕\nNo competition ✨";
+    else if(name==="ochieng") message="💖 Only Maxx is meant for you ❤️\nForever & always";
+    else if(name==="maxx") message="😍❤️ Thank you my wife 😍❤️\nWith you forever 💕\nI love you so so much ❤️❤️❤️";
+    messageText.textContent = message;
+    menuPopup.style.display = "none";
     messageBox.classList.remove("show");
     void messageBox.offsetWidth;
     messageBox.classList.add("show");
