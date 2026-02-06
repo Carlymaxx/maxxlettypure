@@ -103,6 +103,34 @@ body {
   border-radius: 20px;                 /* optional, for nice rounded boxes */
   padding: 20px;                       /* ensure content has space */
 }
+/* ===== ANIMATED HAPPY VALENTINE HEADING ===== */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+
+    /* Rainbow gradient */
+    background: linear-gradient(90deg, #ff4d6d, #ff9f1c, #6a5acd, #ff4d6d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Animations */
+    animation: colorFlow 6s linear infinite, fadeInDown 2s ease, pulseText 2s ease-in-out infinite;
+}
+
+/* Color gradient movement */
+@keyframes colorFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Gentle pulsing effect */
+@keyframes pulseText {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
 
 /* ===== HEADINGS ===== */
 h1 {
