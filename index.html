@@ -222,6 +222,80 @@ p {
     font-size: 18px;
     line-height: 1.6;
 }
+/* ===== LOCKED VIDEO EFFECT ===== */
+#videoSection.locked video {
+  filter: blur(10px) brightness(0.4);
+  pointer-events: none;
+}
+
+#videoSection.unlocked video {
+  filter: none;
+  pointer-events: auto;
+}
+
+/* Overlay */
+#lockOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,40,0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  animation: pulseGlow 2s infinite;
+}
+
+/* Glow animation */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px #4da6ff; }
+  50% { box-shadow: 0 0 30px #4da6ff; }
+  100% { box-shadow: 0 0 10px #4da6ff; }
+}
+
+/* Lock box */
+.lock-box {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Inputs */
+.lock-box input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  width: 220px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+.lock-box button,
+.lock-btn {
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Unlock button */
+.lock-box button {
+  background: linear-gradient(135deg,#5dade2,#3498db);
+  color: #fff;
+}
+
+/* Lock again button */
+.lock-btn {
+  display: none;
+  margin-top: 15px;
+  background: linear-gradient(135deg,#ff6b6b,#ff4757);
+  color: #fff;
+}
 
 /* ===== MENU ===== */
 .menu-container {
@@ -574,6 +648,29 @@ p {
       </p>
     </div>
   </div>
+<div id="videoSection" class="youtube-wrapper locked" style="position:relative;">
+
+  <video id="secretVideo" autoplay loop muted playsinline>
+    <source src="https://files.catbox.moe/32k68k.mp4" type="video/mp4">
+  </video>
+
+  <!-- LOCK OVERLAY -->
+  <div id="lockOverlay">
+    <div class="lock-box">
+      <h3>💙 Put hubby number to access</h3>
+      <input type="password" id="passwordInput" placeholder="Enter number">
+      <br>
+      <button onclick="unlockVideo()">Unlock</button>
+      <p id="lockMessage"></p>
+    </div>
+  </div>
+
+  <!-- LOCK AGAIN BUTTON -->
+  <button id="lockAgainBtn" class="lock-btn" onclick="lockVideo()">
+    🔒 Lock Again
+  </button>
+
+</div>
 
   <div class="footer-bottom">
     <p>© 2026 • Maxx ❤️ Letty • They are inseparable</p>
@@ -658,6 +755,53 @@ document.addEventListener("DOMContentLoaded", () => {
     menuPopup.addEventListener("click", e => e.stopPropagation());
     messageBox.addEventListener("click", e => e.stopPropagation());
   }
+/* ===== VIDEO LOCK SYSTEM ===== */
+const correctPassword = "0725979273";
+let lockTimer = null;
+const LOCK_TIME = 5 * 60 * 1000; // 5 minutes
+
+function unlockVideo() {
+  const input = document.getElementById("passwordInput").value;
+  const msg = document.getElementById("lockMessage");
+  const section = document.getElementById("videoSection");
+  const video = document.getElementById("secretVideo");
+  const overlay = document.getElementById("lockOverlay");
+  const lockBtn = document.getElementById("lockAgainBtn");
+
+  if (input === correctPassword) {
+    msg.textContent =
+      "💖 Letty these are the only videos making my day whenever I miss you";
+    overlay.style.display = "none";
+    section.classList.remove("locked");
+    section.classList.add("unlocked");
+    video.muted = false;
+    video.play();
+    lockBtn.style.display = "inline-block";
+    startLockTimer();
+  } else {
+    msg.textContent = "❌ Not hubby's number";
+  }
+}
+
+function lockVideo() {
+  const section = document.getElementById("videoSection");
+  const overlay = document.getElementById("lockOverlay");
+  const video = document.getElementById("secretVideo");
+  const lockBtn = document.getElementById("lockAgainBtn");
+
+  video.pause();
+  overlay.style.display = "flex";
+  section.classList.remove("unlocked");
+  section.classList.add("locked");
+  lockBtn.style.display = "none";
+  document.getElementById("passwordInput").value = "";
+}
+
+/* Auto lock after 5 minutes */
+function startLockTimer() {
+  clearTimeout(lockTimer);
+  lockTimer = setTimeout(lockVideo, LOCK_TIME);
+}
 
   // CHOICE HANDLER
   window.choose = function(name) {
