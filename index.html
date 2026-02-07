@@ -535,15 +535,20 @@ p {
     You are my heart, my sunshine, my everything ❤️
   </div>
 </div>
-<!-- LARGE YOUTUBE VIDEO WITH CAPTION -->
-<div class="youtube-wrapper">
+<!-- YOUTUBE THUMBNAIL (NO AUTOPLAY) -->
+<div class="youtube-thumbnail" onclick="playYouTube()">
+  <img src="https://img.youtube.com/vi/_b-nVhD2BuM/hqdefault.jpg" alt="For my wangu">
+  <div class="youtube-overlay-text">for my wangu 💕</div>
+  <div class="youtube-play">▶</div>
+</div>
+
+<div class="youtube-wrapper" id="youtubePlayer" style="display:none;">
   <iframe 
-    src="https://www.youtube.com/embed/_b-nVhD2BuM?rel=0&autoplay=1&loop=1&playlist=_b-nVhD2BuM" 
-    title="YouTube Video" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    src="https://www.youtube.com/embed/_b-nVhD2BuM?rel=0"
+    title="YouTube Video"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen>
   </iframe>
-  <div class="youtube-caption">For you my wangu 💕</div>
 </div>
 
 <!-- FOOTER -->
