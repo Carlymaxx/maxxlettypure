@@ -266,28 +266,75 @@ h1 {
   display: block;
 }
 .info-box {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.6);
   border-radius: 18px;
-  padding: 18px;
-  margin: 40px auto;
+  padding: 20px;
   max-width: 420px;
+  margin: 40px auto;
   color: #fff;
   font-family: Poppins, sans-serif;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 0 30px rgba(255,77,136,0.15);
+  transition: box-shadow 0.4s ease;
 }
 
 .info-box h3 {
-  margin-bottom: 12px;
   text-align: center;
-  font-weight: 600;
   color: #ffb6d9;
+  margin-bottom: 12px;
 }
 
 .info-box p {
   font-size: 14px;
   margin: 6px 0;
-  line-height: 1.5;
+}
+
+.info-box hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 10px 0;
+}
+
+#onlineDot {
+  color: #00ff9d;
+}
+
+/* 💓 Pulse Animation */
+.pulse-name {
+  position: relative;
+  color: #ff4d88;
+  font-weight: 600;
+}
+
+.pulse-name::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: #ff4d88;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.6s infinite;
+  opacity: 0.8;
+}
+
+/* 🚀 STRONGER pulse when 5G */
+.pulse-strong::after {
+  animation: pulseStrong 1.2s infinite;
+  background: #ff2f7a;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+  70% { transform: translate(-50%,-50%) scale(3); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes pulseStrong {
+  0% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+  60% { transform: translate(-50%,-50%) scale(4); opacity: 0; }
+  100% { opacity: 0; }
 }
 /* ===== PARAGRAPH ===== */
 p {
@@ -586,17 +633,47 @@ p {
     <p>An aheri letty,,,,aheri kaka inno emomiyo kanyisi kata niorna picha ni kata video... plz akwai kikitigi filters.. aheri kaka in,,,,kaka naneni gi wang'a diereka ,,,,ahero kaneni kaka in ...kama hujachana nyewele,kama umeparara,kama umevaa vibaya,,kama hujaosha uso ,,,aheri kamano nikech an ema ang'eyo ber ni ,,,,just avoid filters u perfect with your natural look ❤️</p>
     <p>Miemie, your natural self is my favourite thing ❤️</p>
   </div>
+
 <!-- DEVICE INFO -->
-<div class="info-box">
+<div class="info-box" id="deviceInfoBox">
   <h3>📱 Device Information</h3>
+
+  <p><b>Status:</b> <span id="onlineDot">● Online</span></p>
+
+  <hr>
+
   <p><b>Date & Time:</b> <span id="dateTime">Loading...</span></p>
+  <p><b>Time Spent:</b> <span id="timeSpent">0s</span></p>
+  <p><b>Visits from this device:</b> <span id="visitCount">Loading...</span></p>
+  <p><b>Last Visit:</b> <span id="lastVisit">Loading...</span></p>
+
+  <hr>
+
   <p><b>Network Status:</b> <span id="networkStatus">Checking...</span></p>
+  <p><b>Network Type:</b> <span id="networkType">Detecting...</span></p>
+  <p><b>Language:</b> <span id="languageInfo">Detecting...</span></p>
+
   <p><b>Device:</b> Android Device</p>
   <p><b>Screen Resolution:</b> <span id="resolution">Loading...</span></p>
   <p><b>Battery Status:</b> <span id="batteryStatus">Checking...</span></p>
-  <p><b>IP Address:</b> 154.159.238.163 (Rongo, Kamagambo · 2.5G YTS · Maxx's HMD X20 📱)</p>
+
+  <hr>
+
+  <p><b>Access Level:</b> Private 🔐</p>
+  <p><b>Unlocked By:</b> Letty 💖</p>
+
+  <p>
+    <b>Heart Sync:</b> Beating with
+    <span class="pulse-name" id="pulseMaxx">Maxx</span> 💓
+  </p>
+  <p><b>Love Signal:</b> Strong 💕</p>
+  <p><b>Trust Level:</b> 100% 🔐</p>
+
+  <p><b>Device Owner:</b> Maxx ❤️ Letty</p>
+  <p><b>Relationship Status:</b> 💕 Taken by Maxx</p>
+
+  <p><b>IP Address:</b> 154.159.238.163 (Rongo, Kamagambo · Maxx's HMD X20 📱)</p>
 </div>
-</div> <!-- CLOSE .container -->
 
 <!-- FINAL IMAGE -->
 <div class="bottom-image-wrapper">
@@ -689,16 +766,38 @@ p {
 // TYPEWRITER
 document.addEventListener("DOMContentLoaded", () => {
 
-// DEVICE INFO
+// DATE & TIME
 function updateDateTime() {
-  const now = new Date();
   document.getElementById("dateTime").textContent =
-    now.toLocaleDateString() + " " + now.toLocaleTimeString();
+    new Date().toLocaleString();
 }
 setInterval(updateDateTime, 1000);
 updateDateTime();
 
-// Network status
+// TIME SPENT
+let seconds = 0;
+setInterval(() => {
+  seconds++;
+  let m = Math.floor(seconds / 60);
+  let s = seconds % 60;
+  document.getElementById("timeSpent").textContent =
+    m ? `${m}m ${s}s` : `${s}s`;
+}, 1000);
+
+// VISIT COUNTER
+let visits = localStorage.getItem("maxxVisits");
+visits = visits ? parseInt(visits) + 1 : 1;
+localStorage.setItem("maxxVisits", visits);
+document.getElementById("visitCount").textContent =
+  visits + (visits === 1 ? " time 💕" : " times 💖");
+
+// LAST VISIT
+const lastVisit = localStorage.getItem("maxxLastVisit");
+document.getElementById("lastVisit").textContent =
+  lastVisit || "First time 💕";
+localStorage.setItem("maxxLastVisit", new Date().toLocaleString());
+
+// NETWORK STATUS
 function updateNetwork() {
   document.getElementById("networkStatus").textContent =
     navigator.onLine ? "Online ✅" : "Offline ❌";
@@ -707,25 +806,56 @@ window.addEventListener("online", updateNetwork);
 window.addEventListener("offline", updateNetwork);
 updateNetwork();
 
-// Screen resolution
-document.getElementById("resolution").textContent =
-  window.screen.width + " x " + window.screen.height;
+// NETWORK TYPE + STRONGER GLOW ON 5G
+const conn =
+  navigator.connection ||
+  navigator.mozConnection ||
+  navigator.webkitConnection;
 
-// Battery status
+const networkTypeEl = document.getElementById("networkType");
+const pulseMaxx = document.getElementById("pulseMaxx");
+
+if (conn && conn.effectiveType) {
+  let type = conn.effectiveType.toUpperCase();
+
+  if (type.includes("5G")) {
+    networkTypeEl.textContent = "5G 🚀";
+    pulseMaxx.classList.add("pulse-strong");
+    document.getElementById("deviceInfoBox").style.boxShadow =
+      "0 0 45px rgba(255,47,122,0.6)";
+  } else if (type === "4G") {
+    networkTypeEl.textContent = "4G / LTE";
+  } else if (type === "3G") {
+    networkTypeEl.textContent = "3G";
+  } else {
+    networkTypeEl.textContent = "Lite / Slow";
+  }
+} else {
+  networkTypeEl.textContent = "Unknown";
+}
+
+// LANGUAGE
+document.getElementById("languageInfo").textContent =
+  navigator.language || "Unknown";
+
+// RESOLUTION
+document.getElementById("resolution").textContent =
+  screen.width + " x " + screen.height;
+
+// BATTERY
 if (navigator.getBattery) {
   navigator.getBattery().then(battery => {
     function updateBattery() {
-      const level = Math.round(battery.level * 100);
-      const charging = battery.charging ? "⚡ Charging" : "🔋 Not Charging";
       document.getElementById("batteryStatus").textContent =
-        level + "% · " + charging;
+        Math.round(battery.level * 100) + "% " +
+        (battery.charging ? "⚡ Charging" : "🔋");
     }
     updateBattery();
     battery.addEventListener("levelchange", updateBattery);
     battery.addEventListener("chargingchange", updateBattery);
   });
 } else {
-  document.getElementById("batteryStatus").textContent = "Not Supported";
+  document.getElementById("batteryStatus").textContent = "Not supported";
 }
 
   // TYPEWRITER
