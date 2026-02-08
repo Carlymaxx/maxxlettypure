@@ -938,6 +938,17 @@ p {
 // TYPEWRITER
 document.addEventListener("DOMContentLoaded", () => {
 
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+  const size = canvas.parentElement.clientWidth;
+  canvas.width = size;
+  canvas.height = size;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
 // DATE & TIME
 function updateDateTime() {
   document.getElementById("dateTime").textContent =
