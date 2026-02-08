@@ -148,6 +148,24 @@ canvas{
   font-size:12px;
   opacity:.7;
 }
+/* LOVE BOX */
+.love-box{
+  width:92vw;
+  max-width:560px;
+  aspect-ratio:1/1;
+  background:radial-gradient(circle,#5a0000,#0a0000);
+  border-radius:28px;
+  box-shadow:0 0 60px rgba(255,0,0,.85);
+  position:relative;
+  overflow:hidden;
+  margin:auto;
+}
+
+/* CANVAS */
+.love-box canvas{
+  position:absolute;
+  inset:0;
+}
 
 /* ===== CONTAINER ===== */
 .container {
@@ -739,6 +757,9 @@ p {
     <p>You are special and appreciated ✨<br>Always keep believing in yourself ✨<br>Nakupenda my wangu 😘</p>
     <div class="signature">— From Maxx ❤️</div>
   </div>
+<div class="love-box">
+  <canvas id="canvas"></canvas>
+</div>
 
   <!-- VIDEO -->
   <div class="video-wrapper">
@@ -925,6 +946,175 @@ function updateDateTime() {
 }
 setInterval(updateDateTime, 1000);
 updateDateTime();
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  const size = canvas.parentElement.clientWidth;
+  canvas.width = canvas.height = size;
+}
+resize();
+window.addEventListener("resize", resize);
+
+/* HEART MOTION STATE */
+let heartFlow = 0;
+let heartSpeed = 0.012; // slower ❤️
+let direction = 1;
+let paused = false;
+let pauseTimer = 0;
+
+/* RING */
+let ringAngle = 0;
+
+/* COLOR + FONT */
+let colorShift = 0;
+let fontIndex = 0;
+const fonts = [
+  "bold Arial",
+  "italic Georgia",
+  "bold Courier New",
+  "bold Times New Roman",
+  "italic Verdana"
+];
+
+/* NAME PARTICLES */
+let particles = [];
+let letterIndex = 0;
+const letters = ["M","A","X","X","L","E","T","T","Y"];
+
+/* HEART FORMULA */
+function heartPath(a){
+  return {
+    x: 16 * Math.pow(Math.sin(a),3),
+    y: -(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))
+  };
+}
+
+/* BUILD NAME LETTER BY LETTER */
+function createNextLetter(){
+  if(letterIndex >= letters.length) return;
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const fontSize = canvas.width * 0.11;
+  ctx.font = `bold ${fontSize}px Arial`;
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+
+  const centerY = canvas.height * 0.75;
+  const gap = fontSize * 0.25;
+
+  let totalWidth = 0;
+  letters.forEach(l=>{
+    totalWidth += ctx.measureText(l).width + gap;
+  });
+
+  let x = (canvas.width - totalWidth) / 2;
+
+  for(let i=0;i<=letterIndex;i++){
+    ctx.fillText(letters[i], x, centerY);
+    x += ctx.measureText(letters[i]).width + gap;
+  }
+
+  const img = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+
+  for(let y=centerY-fontSize/2;y<centerY+fontSize/2;y+=7){
+    for(let x=10;x<canvas.width-10;x+=7){
+      if(img[(y*canvas.width+x)*4+3] > 150){
+        particles.push({
+          x: Math.random()*canvas.width,
+          y: canvas.height + Math.random()*120,
+          tx: x,
+          ty: y,
+          s: Math.random()*0.05 + 0.03
+        });
+      }
+    }
+  }
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  letterIndex++;
+}
+
+createNextLetter();
+setInterval(createNextLetter,700);
+
+/* RANDOM STOP & DIRECTION CHANGE */
+function updateHeartMotion(){
+  if(paused){
+    pauseTimer--;
+    if(pauseTimer <= 0){
+      paused = false;
+      if(Math.random() < 0.5) direction *= -1;
+    }
+  }else{
+    if(Math.random() < 0.003){
+      paused = true;
+      pauseTimer = 40 + Math.random()*40;
+    }
+  }
+}
+
+/* MAIN LOOP */
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const cx = canvas.width/2;
+  const cy = canvas.height*0.28;
+
+  /* HEART TEXT */
+  const scale = 5;
+  for(let i=0;i<80;i++){
+    const a = heartFlow + i*0.12;
+    const p = heartPath(a);
+    ctx.font="16px Arial";
+    ctx.fillText("тЭдя╕П", cx + p.x*scale, cy + p.y*scale);
+  }
+
+  /* ROTATING RING */
+  const r = canvas.width * 0.24;
+  for(let i=0;i<32;i++){
+    const a = ringAngle - i*(Math.PI*2/32);
+    ctx.font="14px Arial";
+    ctx.fillText("тЭдя╕П",
+      cx + Math.cos(a)*r,
+      cy + Math.sin(a)*r
+    );
+  }
+
+  /* NAME PARTICLES */
+  particles.forEach(p=>{
+    p.x += (p.tx - p.x) * p.s;
+    p.y += (p.ty - p.y) * p.s;
+    ctx.font="16px Arial";
+    ctx.fillText("тЭдя╕П", p.x, p.y);
+  });
+
+  /* LETTY COLOR + FONT CHANGE */
+  const hue = colorShift % 360;
+  ctx.fillStyle = `hsl(${hue},100%,70%)`;
+  ctx.shadowColor = `hsl(${hue},100%,60%)`;
+  ctx.shadowBlur = 30;
+  ctx.font = `${fonts[fontIndex]} ${canvas.width * 0.12}px`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("LETTY", canvas.width/2, canvas.height*0.88);
+
+  updateHeartMotion();
+  if(!paused) heartFlow += heartSpeed * direction;
+
+  ringAngle -= 0.02;
+  colorShift += 0.8;
+
+  if(colorShift % 120 < 1){
+    fontIndex = (fontIndex + 1) % fonts.length;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
 
 // TIME SPENT
 let seconds = 0;
