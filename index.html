@@ -135,12 +135,11 @@ button{
   from{text-shadow:0 0 15px gold,0 0 30px #ffd700}
   to{text-shadow:0 0 45px gold,0 0 80px #fff}
 }
-
-canvas{
+.love-box canvas{
   position:absolute;
   inset:0;
   pointer-events:none;
-  display:none;
+  display:block;   /* 👈 show the heart */
 }
 
 #watermark{
@@ -947,15 +946,34 @@ function updateDateTime() {
 setInterval(updateDateTime, 1000);
 updateDateTime();
 
-const heartCanvas = document.getElementById("canvas");
-const heartCtx = heartCanvas.getContext("2d");
+const fireworksCanvas = document.getElementById("fireworks");
+const fireworksCtx = fireworksCanvas.getContext("2d");
 
-function resize(){
-  const size = canvas.parentElement.clientWidth;
-  canvas.width = canvas.height = size;
+fireworksCanvas.width = 420;
+fireworksCanvas.height = 420;
+
+function playFireworks(){
+  fireworksCanvas.style.display="block";
+  fireworksCtx.clearRect(0,0,420,420);
+
+  for(let i=0;i<100;i++){
+    setTimeout(()=>{
+      fireworksCtx.fillStyle=`hsl(${Math.random()*360},100%,65%)`;
+      fireworksCtx.beginPath();
+      fireworksCtx.arc(
+        Math.random()*420,
+        Math.random()*420,
+        6,0,Math.PI*2
+      );
+      fireworksCtx.fill();
+    },i*25);
+  }
+
+  setTimeout(()=>{
+    fireworksCtx.clearRect(0,0,420,420);
+    fireworksCanvas.style.display="none";
+  },3500);
 }
-resize();
-window.addEventListener("resize", resize);
 
 /* HEART MOTION STATE */
 let heartFlow = 0;
@@ -1332,23 +1350,30 @@ setInterval(()=>{
 
 const fireworksCanvas = document.getElementById("fireworks");
 const fireworksCtx = fireworksCanvas.getContext("2d");
-canvas.width=420;
-canvas.height=420;
+
+fireworksCanvas.width = 420;
+fireworksCanvas.height = 420;
 
 function playFireworks(){
-  canvas.style.display="block";
-  ctx.clearRect(0,0,420,420);
+  fireworksCanvas.style.display="block";
+  fireworksCtx.clearRect(0,0,420,420);
+
   for(let i=0;i<100;i++){
     setTimeout(()=>{
-      ctx.fillStyle=`hsl(${Math.random()*360},100%,65%)`;
-      ctx.beginPath();
-      ctx.arc(Math.random()*420,Math.random()*420,6,0,Math.PI*2);
-      ctx.fill();
+      fireworksCtx.fillStyle=`hsl(${Math.random()*360},100%,65%)`;
+      fireworksCtx.beginPath();
+      fireworksCtx.arc(
+        Math.random()*420,
+        Math.random()*420,
+        6,0,Math.PI*2
+      );
+      fireworksCtx.fill();
     },i*25);
   }
+
   setTimeout(()=>{
-    ctx.clearRect(0,0,420,420);
-    canvas.style.display="none";
+    fireworksCtx.clearRect(0,0,420,420);
+    fireworksCanvas.style.display="none";
   },3500);
 }
 
