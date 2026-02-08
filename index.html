@@ -947,8 +947,8 @@ function updateDateTime() {
 setInterval(updateDateTime, 1000);
 updateDateTime();
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const heartCanvas = document.getElementById("canvas");
+const heartCtx = heartCanvas.getContext("2d");
 
 function resize(){
   const size = canvas.parentElement.clientWidth;
