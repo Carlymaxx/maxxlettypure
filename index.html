@@ -948,6 +948,13 @@ function resizeCanvas(){
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
+const proposalText = document.getElementById("proposalText");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const noText = document.getElementById("noText");
+const happyMessage = document.getElementById("happyMessage");
+const ring = document.getElementById("ring");
+const yesVoice = document.getElementById("yesVoice");
 
 // DATE & TIME
 function updateDateTime() {
@@ -1358,9 +1365,6 @@ setInterval(()=>{
   box.appendChild(h);
   setTimeout(()=>h.remove(),7000);
 },700);
-
-const fireworksCanvas = document.getElementById("fireworks");
-const fireworksCtx = fireworksCanvas.getContext("2d");
 
 fireworksCanvas.width = 420;
 fireworksCanvas.height = 420;
