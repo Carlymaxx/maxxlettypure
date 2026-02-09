@@ -1105,7 +1105,7 @@ function animate(){
     const a = heartFlow + i*0.12;
     const p = heartPath(a);
     ctx.font="16px Arial";
-    ctx.fillText("Letty П", cx + p.x*scale, cy + p.y*scale);
+    ctx.fillText("Letty", cx + p.x*scale, cy + p.y*scale);
   }
 
   /* ROTATING RING */
@@ -1113,7 +1113,7 @@ function animate(){
   for(let i=0;i<32;i++){
     const a = ringAngle - i*(Math.PI*2/32);
     ctx.font="14px Arial";
-    ctx.fillText("Letty П",
+    ctx.fillText("MAXX",
       cx + Math.cos(a)*r,
       cy + Math.sin(a)*r
     );
