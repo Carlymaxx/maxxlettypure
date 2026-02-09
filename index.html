@@ -1105,7 +1105,7 @@ function animate(){
     const a = heartFlow + i*0.12;
     const p = heartPath(a);
     ctx.font="16px Arial";
-    ctx.fillText("тЭдя╕П", cx + p.x*scale, cy + p.y*scale);
+    ctx.fillText("Letty П", cx + p.x*scale, cy + p.y*scale);
   }
 
   /* ROTATING RING */
@@ -1113,7 +1113,7 @@ function animate(){
   for(let i=0;i<32;i++){
     const a = ringAngle - i*(Math.PI*2/32);
     ctx.font="14px Arial";
-    ctx.fillText("тЭдя╕П",
+    ctx.fillText("Letty П",
       cx + Math.cos(a)*r,
       cy + Math.sin(a)*r
     );
@@ -1124,7 +1124,7 @@ function animate(){
     p.x += (p.tx - p.x) * p.s;
     p.y += (p.ty - p.y) * p.s;
     ctx.font="16px Arial";
-    ctx.fillText("тЭдя╕П", p.x, p.y);
+    ctx.fillText("Letty П", p.x, p.y);
   });
 
   /* LETTY COLOR + FONT CHANGE */
@@ -1135,7 +1135,7 @@ function animate(){
   ctx.font = `${fonts[fontIndex]} ${canvas.width * 0.12}px`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillText("LETTY", canvas.width/2, canvas.height*0.88);
+  ctx.fillText("MAXXETTY", canvas.width/2, canvas.height*0.88);
 
   updateHeartMotion();
   if(!paused) heartFlow += heartSpeed * direction;
