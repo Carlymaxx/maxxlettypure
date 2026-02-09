@@ -1414,19 +1414,27 @@ yesBtn.onclick=()=>{
 };
 
   // CHOICE HANDLER
-  window.choose = function(name) {
-    const messageText = document.getElementById("messageText");
-    let message = "";
-    if(name==="carly") message="😂 Nooo not me… it’s Maxx ❤️\nAlways Maxx 😘";
-    else if(name==="calvince") message="😌 Maxx deserves this love 💕\nNo competition ✨";
-    else if(name==="ochieng") message="💖 Only Maxx is meant for you ❤️\nForever & always";
-    else if(name==="maxx") message="😍❤️ Thank you for choosing me over and over my wife 😍❤️\nWith you forever 💕\nI love you so so much ❤️❤️❤️";
-    messageText.textContent = message;
-    menuPopup.style.display = "none";
-    messageBox.classList.remove("show");
-    void messageBox.offsetWidth;
-    messageBox.classList.add("show");
-  };
+ 
+window.choose = function(name) {
+  const messageText = document.getElementById("messageText");
+  let message = "";
+
+  if (name === "carly") {
+    message = "😂 Nooo… not Carly.\nIt’s Maxx ❤️ Always Maxx 😘";
+  } else if (name === "ochieng") {
+    message = "😌 Nice try… but Maxx owns this heart 💕";
+  } else if (name === "calvince") {
+    message = "😂 Haha nope.\nMaxx forever 💖";
+  } else if (name === "maxx") {
+    message = "😍❤️ You chose right miemie.\nMaxx & Letty forever 💍💞";
+  }
+
+  messageText.textContent = message;
+  menuPopup.style.display = "none";
+  messageBox.classList.remove("show");
+  void messageBox.offsetWidth;
+  messageBox.classList.add("show");
+};
 });
 </script>
 </body>
