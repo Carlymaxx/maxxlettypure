@@ -462,7 +462,7 @@ h1 {
   opacity: 0.8;
 }
 
-/* 🚀 STRONGER pulse when 5G */
+/* 🚀 STRONGER pulse when 4G */
 .pulse-strong::after {
   animation: pulseStrong 1.2s infinite;
   background: #ff2f7a;
@@ -1199,7 +1199,7 @@ if (conn && conn.effectiveType) {
   let type = conn.effectiveType.toUpperCase();
 
   if (type.includes("5G")) {
-    networkTypeEl.textContent = "5G 🚀";
+    networkTypeEl.textContent = "4G 🚀";
     pulseMaxx.classList.add("pulse-strong");
     document.getElementById("deviceInfoBox").style.boxShadow =
       "0 0 45px rgba(255,47,122,0.6)";
